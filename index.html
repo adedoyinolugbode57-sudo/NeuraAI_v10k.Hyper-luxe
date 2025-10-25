@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NeuraAI_v10k • Hyper-Luxe</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div id="app" class="theme-dark neon">
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="left">
+        <button id="openDrawer" class="icon">☰</button>
+        <div class="brand">NeuraAI_v10k <span class="tag">Hyper-Luxe</span></div>
+      </div>
+      <div class="right">
+        <select id="quickTheme" title="Quick theme (dropdown)"></select>
+        <button id="openGrid" title="Open full theme grid" class="icon">🎨</button>
+        <select id="langSelect" title="Language"></select>
+        <button id="avatarToggle" class="icon" title="Toggle avatar">🧠</button>
+        <button id="modeToggle" class="icon" title="Dark / Light">🌗</button>
+      </div>
+    </header>
+
+    <!-- Sidebar drawer -->
+    <aside id="drawer" class="drawer">
+      <div class="drawer-top">
+        <h2>NeuraAI</h2>
+        <button id="closeDrawer" class="icon">×</button>
+      </div>
+      <nav class="nav">
+        <button class="nav-item" data-section="chat">💬 Chat</button>
+        <button class="nav-item" data-section="education">📘 Education</button>
+        <button class="nav-item" data-section="novels">📚 Novels</button>
+        <button class="nav-item" data-section="web">🌐 Web Search</button>
+        <button class="nav-item" data-section="crypto">💹 Crypto</button>
+        <button class="nav-item" data-section="community">👥 Community</button>
+        <button class="nav-item" data-section="games">🎮 Mini-Games</button>
+        <button class="nav-item" data-section="settings">⚙️ Settings</button>
+      </nav>
+      <footer class="drawer-foot">Created by CHATGPT + Joshua Dav</footer>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <!-- Chat -->
+      <section id="chat" class="panel active">
+        <div class="panel-header"><h3>Chat Assistant</h3>
+          <div class="panel-actions">
+            <button id="voiceBtn" title="Voice input/output">🎙️</button>
+            <button id="summaryBtn" title="AI Auto-Summary">📝 Summary</button>
+          </div>
+        </div>
+        <div id="chatWindow" class="chat-window" aria-live="polite"></div>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" autocomplete="off" placeholder="Ask NeuraAI anything..." />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="panel">
+        <div class="panel-header"><h3>Subject Trainer</h3></div>
+        <div class="controls">
+          <select id="subjectSelect"><option>Math</option><option>Science</option><option>Language</option><option>History</option></select>
+          <button id="startLesson">Start Lesson</button>
+        </div>
+        <div id="lessonArea" class="panel-body">Choose a subject and start a lesson.</div>
+      </section>
+
+      <!-- Novels -->
+      <section id="novels" class="panel">
+        <div class="panel-header"><h3>Novel Universe</h3></div>
+        <div class="novel-controls">
+          <input id="novelSearch" placeholder="Search titles or authors" />
+          <select id="novelCat"><option value="">All</option><option value="anime">Anime</option><option value="animation">Animation</option><option value="real-life">Real-life</option></select>
+          <button id="novelFilter">Filter</button>
+        </div>
+        <div id="novelList" class="panel-body">Loading novels...</div>
+      </section>
+
+      <!-- Web -->
+      <section id="web" class="panel">
+        <div class="panel-header"><h3>Smart Web Search</h3></div>
+        <div class="controls">
+          <input id="webQuery" placeholder="Search the web (safe mode)..." />
+          <button id="webSearchBtn">Search</button>
+        </div>
+        <div id="webResults" class="panel-body"></div>
+      </section>
+
+      <!-- Crypto -->
+      <section id="crypto" class="panel">
+        <div class="panel-header"><h3>Crypto Insights</h3>
+          <div class="panel-actions"><button id="refreshCrypto">↻ Refresh</button></div>
+        </div>
+        <div id="cryptoFeed" class="panel-body">Loading crypto data...</div>
+        <div id="portfolioArea" class="panel-footer">
+          <input id="portfolioInput" placeholder='{"bitcoin":0.01,"ethereum":0.1}' />
+          <button id="portfolioBtn">Value</button>
+        </div>
+      </section>
+
+      <!-- Community -->
+      <section id="community" class="panel">
+        <div class="panel-header"><h3>Community Feed</h3></div>
+        <form id="postForm" class="post-form">
+          <input id="postUser" placeholder="Your name" required />
+          <textarea id="postContent" placeholder="Share something..." required></textarea>
+          <button type="submit">Post</button>
+        </form>
+        <div id="feedList" class="panel-body">Loading community posts...</div>
+      </section>
+
+      <!-- Games -->
+      <section id="games" class="panel">
+        <div class="panel-header"><h3>Mini-Games</h3></div>
+        <div class="panel-body">
+          <button id="tttNew">Tic-Tac-Toe (New)</button>
+          <button id="numNew">Number Guess</button>
+          <div id="gameArea"></div>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section id="settings" class="panel">
+        <div class="panel-header"><h3>Settings</h3></div>
+        <div class="settings-grid panel-body">
+          <label><input type="checkbox" id="toggleAnimations"> Enable Animations</label>
+          <label><input type="checkbox" id="toggleSound"> Enable Sound FX</label>
+          <label><input type="checkbox" id="toggleBgAnim"> Animated Background</label>
+          <label>Theme grid: <button id="openThemeGridSmall">Open</button></label>
+          <label>Auto-save preferences: <input type="checkbox" id="autosavePref" checked /></label>
+        </div>
+      </section>
+    </main>
+
+    <!-- full theme grid modal -->
+    <div id="themeModal" class="modal hidden">
+      <div class="modal-inner">
+        <header><h3>Choose a Theme</h3><button id="closeThemeGrid">×</button></header>
+        <div id="themeGrid" class="theme-grid"></div>
+        <footer><button id="applyTheme">Apply</button></footer>
+      </div>
+    </div>
+
+    <!-- subtle animated background layers -->
+    <div id="bgLayer" class="bg-layer"></div>
+
+    <audio id="sndPop" src="/static/sounds/pop.mp3" preload="auto"></audio>
+
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

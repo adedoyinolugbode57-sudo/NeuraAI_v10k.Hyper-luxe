@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: neuraai-v10k-hyperluxe
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main:app --workers 3 --timeout 120
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: ENABLE_TTS
+        value: "false"
+      - key: ENABLE_GRADIO
+        value: "false"
+      - key: NEURA_MODEL
+        value: "gpt-5-mini"

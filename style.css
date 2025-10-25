@@ -1,0 +1,56 @@
+/* NeuraAI_v10k Hyper-Luxe — Frontend CSS (compact, responsive, theme-ready) */
+
+:root{
+  --accent:#00e5ff; --bg:#07070a; --panel:#0f1622; --text:#e8f0ff;
+  --glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.02)}
+.topbar .brand{font-weight:700;letter-spacing:.6px}
+.topbar .tag{color:var(--accent);font-weight:700;margin-left:6px}
+.topbar .right{display:flex;align-items:center;gap:8px}
+.icon{background:transparent;border:0;color:inherit;font-size:1.05rem;padding:8px;border-radius:8px;cursor:pointer}
+.icon:hover{background:rgba(255,255,255,0.02)}
+.drawer{position:fixed;left:-260px;top:0;width:250px;height:100%;background:linear-gradient(180deg,var(--panel),#0c1016);padding:18px;box-shadow:8px 0 30px rgba(0,0,0,0.6);transition:left .35s}
+.drawer.open{left:0}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.nav{display:flex;flex-direction:column;gap:6px}
+.nav-item{padding:10px;border-radius:8px;background:transparent;color:var(--text);border:0;text-align:left;cursor:pointer}
+.nav-item:hover{background:rgba(255,255,255,0.02);color:var(--accent)}
+
+.main{margin:18px;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.panel{background:var(--glass);border-radius:12px;padding:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6);min-height:180px}
+.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.panel-body{max-height:360px;overflow:auto;padding:6px;border-radius:8px}
+.chat-window{height:320px;overflow:auto;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border-radius:8px}
+.chat-form{display:flex;gap:8px;margin-top:10px}
+.chat-form input{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
+.chat-form button{padding:10px 14px;border-radius:10px;background:var(--accent);color:#001;font-weight:700;border:0;cursor:pointer}
+
+.panel-footer{margin-top:8px}
+.controls{display:flex;gap:8px;align-items:center}
+.novel-controls{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.post-form input,.post-form textarea{width:100%;padding:10px;border-radius:8px;background:#0c0d12;border:1px solid rgba(255,255,255,0.02);color:inherit;margin-bottom:8px}
+.post-form button{background:var(--accent);color:#001;padding:8px 12px;border-radius:8px;border:0}
+
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(44px,1fr));gap:8px;padding:12px}
+.theme-swatch{height:44px;border-radius:8px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);z-index:30}
+.hidden{display:none}
+.modal-inner{background:linear-gradient(180deg,#071023,#0b1018);border-radius:12px;padding:12px;width:min(980px,96%);box-shadow:0 20px 60px rgba(0,0,0,0.7)}
+
+.bg-layer{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 10% 20%, rgba(0,229,255,0.06), transparent 8%), radial-gradient(circle at 90% 80%, rgba(255,51,204,0.03), transparent 10%);transition:all .6s}
+body.light{--bg:#f6f7fb;--panel:#ffffff;--text:#111;--glass:rgba(0,0,0,0.03);--accent:#4dabf7}
+
+/* theme classes (a few examples; script will add 100+ dynamically) */
+.neon{--accent:#00e5ff}
+.violet{--accent:#a16bf2}
+.crimson{--accent:#ff3b3b}
+.emerald{--accent:#00c97e}
+
+/* responsive */
+@media(max-width:900px){
+  .main{grid-template-columns:1fr}
+  .drawer{width:220px}
+}

@@ -1,0 +1,27 @@
+# NeuraAI_v10k.Hyperluxe Premium Requirements
+# Render-optimized and verified (2025 Edition)
+
+Flask==3.0.3
+Flask-Cors==4.0.1
+gunicorn==22.0.0
+openai==1.40.6
+requests==2.32.3
+redis==5.1.1
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+gTTS==2.5.3
+PyJWT==2.10.1
+pydub==0.25.1
+beautifulsoup4==4.12.3
+pandas==2.2.3
+aiohttp==3.10.8
+schedule==1.2.1
+colorama==0.4.6
+rich==13.9.2
+matplotlib==3.9.2
+transformers==4.45.2
+torch==2.4.1
+sentencepiece==0.2.0
+langdetect==1.0.9
+tqdm==4.66.5
+cachetools==5.5.0

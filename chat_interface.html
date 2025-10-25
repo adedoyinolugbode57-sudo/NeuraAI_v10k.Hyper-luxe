@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeuraAI v10k Hyperluxe Chat</title>
+  <link rel="stylesheet" href="chat_interface.css" />
+  <script defer src="chat_interface.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header class="chat-header">
+      <h1>🤖 NeuraAI v10k Hyperluxe</h1>
+      <div class="toggles">
+        <label>
+          <input type="checkbox" id="voiceToggle" />
+          <span>🎙️ Voice</span>
+        </label>
+        <label>
+          <input type="checkbox" id="themeToggle" />
+          <span>🌗 Theme</span>
+        </label>
+      </div>
+    </header>
+
+    <main id="chatContainer"></main>
+
+    <footer class="chat-footer">
+      <input id="userInput" type="text" placeholder="Type your message..." autofocus />
+      <button id="sendBtn">Send</button>
+    </footer>
+  </div>
+</body>
+</html>

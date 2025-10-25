@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neura Voice Assistant Settings</title>
+  <link rel="stylesheet" href="voice_settings.css" />
+</head>
+<body>
+  <div class="voice-container">
+    <header>
+      <h1>🎙️ Neura Voice Settings</h1>
+      <p>Customize your AI voice assistant experience.</p>
+    </header>
+
+    <div class="settings-grid">
+      <div class="setting">
+        <label>Voice Gender:</label>
+        <select id="voice-gender">
+          <option value="female" selected>Female</option>
+          <option value="male">Male</option>
+          <option value="robotic">Robotic</option>
+        </select>
+      </div>
+
+      <div class="setting">
+        <label>Speaking Tone:</label>
+        <select id="voice-tone">
+          <option value="friendly" selected>Friendly</option>
+          <option value="formal">Formal</option>
+          <option value="cheerful">Cheerful</option>
+          <option value="calm">Calm</option>
+          <option value="professional">Professional</option>
+        </select>
+      </div>
+
+      <div class="setting">
+        <label>Language:</label>
+        <select id="voice-language">
+          <option value="en">English</option>
+          <option value="fr">French</option>
+          <option value="es">Spanish</option>
+          <option value="zh">Chinese</option>
+          <option value="de">German</option>
+          <option value="ja">Japanese</option>
+          <option value="ar">Arabic</option>
+        </select>
+      </div>
+
+      <div class="setting">
+        <label>Speech Rate:</label>
+        <input type="range" id="voice-rate" min="100" max="220" value="170" />
+      </div>
+
+      <div class="setting">
+        <label>Volume:</label>
+        <input type="range" id="voice-volume" min="0" max="1" step="0.05" value="0.9" />
+      </div>
+    </div>
+
+    <div class="button-area">
+      <button id="test-voice">🔊 Test Voice</button>
+      <button id="save-settings">💾 Save Settings</button>
+    </div>
+  </div>
+
+  <script src="voice_settings.js"></script>
+</body>
+</html>
