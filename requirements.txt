@@ -6,10 +6,10 @@ Flask-Cors==1.2.1
 requests==2.31.0
 transformers==4.45.0
 
-# --- PyTorch (CPU compatible with Render) ---
-torch==2.5.1
-torchvision==0.24.0
-torchaudio==2.5.1
+# --- PyTorch Stack (Render-compatible) ---
+torch==2.7.1
+torchvision==0.15.2
+torchaudio==2.7.1
 
 # --- Utilities & Data ---
 numpy==1.27.0
