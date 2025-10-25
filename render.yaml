@@ -2,16 +2,30 @@ services:
   - type: web
     name: neuraai-v10k-hyperluxe
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn main:app --workers 3 --timeout 120
+    plan: starter  # or use 'standard' for higher performance
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: gunicorn main:app --workers 3 --timeout 120 --log-level info
     envVars:
       - key: OPENAI_API_KEY
         sync: false
-      - key: DATABASE_URL
+      - key: NEURA_ADMIN_TOKEN
         sync: false
-      - key: ENABLE_TTS
-        value: "false"
-      - key: ENABLE_GRADIO
-        value: "false"
+      - key: DATABASE_URL
+        value: postgresql://postgres:postgres@db:5432/neura
+      - key: REDIS_URL
+        value: redis://cache:6379/0
       - key: NEURA_MODEL
-        value: "gpt-5-mini"
+        value: gpt-5-mini
+      - key: ENABLE_TTS
+        value: true
+      - key: ENABLE_GRADIO
+        value: false
+
+databases:
+  - name: db
+    plan: starter
+  - name: cache
+    plan: starter
+    type: redis

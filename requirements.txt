@@ -1,30 +1,36 @@
 # --- Web Framework ---
-Flask==2.3.3
-Flask-Cors==1.2.1
+Flask
+Flask-Cors
 
 # --- AI / GPT Integration ---
-requests==2.31.0
-transformers==4.45.0
+requests
+transformers
 
 # --- PyTorch Stack (CPU compatible on Render) ---
-torch==2.9.0
-torchvision==0.24.0
-torchaudio==2.9.0
+torch
+torchvision
+torchaudio
 
 # --- Utilities & Data ---
-numpy==2.2.4
-pandas==2.2.4
-python-dotenv==1.0.1
+numpy
+pandas
+python-dotenv
 
 # --- Voice & Audio ---
-gTTS==2.5.4
-pyttsx3==2.90
-soundfile==0.12.1
-pydub==0.26.0
+gTTS
+pyttsx3
+soundfile
+pydub
 
 # --- Mini-games ---
-pygame==2.5.2
+pygame
 
 # --- Analytics & Visualization ---
-matplotlib==3.8.1
-seaborn==0.12.3
+matplotlib
+seaborn
+
+# --- Additional Tools & Dependencies ---
+tqdm
+Pillow
+colorama
+rich
