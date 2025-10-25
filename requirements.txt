@@ -1,35 +1,30 @@
-# Core Web Framework
+# --- Web Framework ---
 Flask==2.3.3
 Flask-Cors==1.2.1
 
-# AI / GPT Integration
+# --- AI / GPT Integration ---
 requests==2.31.0
 transformers==4.45.0
 
-# PyTorch (CPU or GPU)
+# --- PyTorch (CPU compatible with Render) ---
 torch==2.5.1
-torchvision==0.16.1
+torchvision==0.15.2
 torchaudio==2.5.1
 
-# Utilities & Data
+# --- Utilities & Data ---
 numpy==1.27.0
 pandas==2.1.0
+python-dotenv==1.0.1
 
-# Voice & Audio
+# --- Voice & Audio ---
 gTTS==2.4.2
 pyttsx3==2.90
 soundfile==0.12.1
 pydub==0.26.0
 
-# Mini-games / logic
+# --- Mini-games ---
 pygame==2.5.2
 
-# JSON / Config Handling
-python-dotenv==1.0.1
-
-# Optional: Analytics
+# --- Analytics & Visualization ---
 matplotlib==3.8.1
 seaborn==0.12.3
-
-# Upgrade pip to latest
-pip>=25.3
