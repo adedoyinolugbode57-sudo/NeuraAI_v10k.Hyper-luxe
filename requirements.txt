@@ -1,36 +1,31 @@
-# --- Web Framework ---
 Flask
 Flask-Cors
-
-# --- AI / GPT Integration ---
+gunicorn
+SQLAlchemy
+psycopg2-binary
 requests
+python-dotenv
 transformers
-
-# --- PyTorch Stack (CPU compatible on Render) ---
 torch
 torchvision
 torchaudio
-
-# --- Utilities & Data ---
 numpy
 pandas
-python-dotenv
-
-# --- Voice & Audio ---
 gTTS
 pyttsx3
 soundfile
 pydub
-
-# --- Mini-games ---
 pygame
-
-# --- Analytics & Visualization ---
 matplotlib
 seaborn
-
-# --- Additional Tools & Dependencies ---
+redis
+flask-socketio
+python-engineio
+python-socketio
 tqdm
 Pillow
 colorama
 rich
+psutil
+Flask-Caching
+gunicorn

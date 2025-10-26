@@ -838,3 +838,7 @@ if __name__ == "__main__":
         print(" - analytics:", bool(local_analytics))
     else:
         print("Usage: python main.py [run|bootstrap|test]")
+        from flask_caching import Cache
+app.config['CACHE_TYPE'] = 'simple'
+app.config['CACHE_DEFAULT_TIMEOUT'] = 300
+cache = Cache(app)
