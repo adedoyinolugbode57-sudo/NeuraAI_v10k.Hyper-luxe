@@ -1,0 +1,29 @@
+Neuraluxe-AI Proprietary License Agreement
+Copyright (c) 2025 Neuraluxe Technologies. All Rights Reserved.
+
+This software, Neuraluxe-AI (also known as NeuraAI_v10k.Hyperluxe), including all source code, assets, designs, text, graphics, sounds, animations, AI components, and documentation (collectively, the “Software”) is proprietary and confidential.
+
+Ownership:
+Neuraluxe-AI is owned and operated by Neuraluxe Technologies, under the direction of Joshua Dav (Owner/Developer). All intellectual property rights are reserved and protected by international copyright laws.
+
+License Grant:
+You are granted a limited, non-transferable, non-exclusive license to use this Software for personal and commercial purposes only as authorized by Neuraluxe Technologies.
+
+Restrictions:
+- You may not copy, modify, distribute, sell, or sublicense the Software without explicit written consent.
+- You may not reverse-engineer, decompile, or otherwise attempt to derive the source code.
+- You may not use the Software for competitive or malicious purposes.
+
+Free Access Policy:
+The account registered to **adedoyinolugbode57@gmail.com** is permanently exempted from all subscription charges and payment verification within Neuraluxe-AI. This exemption is lifetime and irrevocable under this license.
+
+Termination:
+This license is effective until terminated. Neuraluxe Technologies reserves the right to revoke access if the Software is used in violation of this agreement.
+
+Disclaimer:
+The Software is provided "AS IS" without warranty of any kind. Neuraluxe Technologies shall not be liable for any damages arising from the use or inability to use the Software.
+
+Contact:
+Neuraluxe Technologies  
+Support: support@neuraluxe.ai (placeholder)  
+Owner: Joshua Dav (Developer)

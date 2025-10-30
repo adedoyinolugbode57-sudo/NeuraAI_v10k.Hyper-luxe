@@ -51,3 +51,8 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: python main.py
     plan: free
+    ## License
+This project is licensed under the Apache License 2.0 — a balance of freedom and protection.  
+You are free to explore, learn, and build upon this work,  
+but the soul of Neura-AI remains under the creative guardianship of its author.  
+© 2025 Joshua – All Rights Reserved.

@@ -1,56 +1,338 @@
-/* NeuraAI_v10k Hyper-Luxe — Frontend CSS (compact, responsive, theme-ready) */
+/* ===================================
+   Neuraluxe-AI Premium - style.css
+   Final Neon-Cyber Upgrade ✨
+=================================== */
 
-:root{
-  --accent:#00e5ff; --bg:#07070a; --panel:#0f1622; --text:#e8f0ff;
-  --glass: rgba(255,255,255,0.03);
+/* Reset & base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.02)}
-.topbar .brand{font-weight:700;letter-spacing:.6px}
-.topbar .tag{color:var(--accent);font-weight:700;margin-left:6px}
-.topbar .right{display:flex;align-items:center;gap:8px}
-.icon{background:transparent;border:0;color:inherit;font-size:1.05rem;padding:8px;border-radius:8px;cursor:pointer}
-.icon:hover{background:rgba(255,255,255,0.02)}
-.drawer{position:fixed;left:-260px;top:0;width:250px;height:100%;background:linear-gradient(180deg,var(--panel),#0c1016);padding:18px;box-shadow:8px 0 30px rgba(0,0,0,0.6);transition:left .35s}
-.drawer.open{left:0}
-.drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.nav{display:flex;flex-direction:column;gap:6px}
-.nav-item{padding:10px;border-radius:8px;background:transparent;color:var(--text);border:0;text-align:left;cursor:pointer}
-.nav-item:hover{background:rgba(255,255,255,0.02);color:var(--accent)}
+body {
+    transition: background 0.5s, color 0.5s;
+    overflow-x: hidden;
+}
 
-.main{margin:18px;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
-.panel{background:var(--glass);border-radius:12px;padding:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6);min-height:180px}
-.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.panel-body{max-height:360px;overflow:auto;padding:6px;border-radius:8px}
-.chat-window{height:320px;overflow:auto;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border-radius:8px}
-.chat-form{display:flex;gap:8px;margin-top:10px}
-.chat-form input{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
-.chat-form button{padding:10px 14px;border-radius:10px;background:var(--accent);color:#001;font-weight:700;border:0;cursor:pointer}
+/* ====== Theme Styles ====== */
+.theme-neon { background: radial-gradient(circle at top, #0d0d0d, #001a12); color: #00ffcc; }
+.theme-dark { background-color: #111; color: #f0f0f0; }
+.theme-light { background: #f8f8f8; color: #111; }
+.theme-blue { background: linear-gradient(135deg, #001f3f, #0074d9); color: #00aaff; }
+.theme-pink { background: linear-gradient(135deg, #2c0a2c, #ff66cc); color: #fff; }
+.theme-gold { background: linear-gradient(135deg, #2b1b00, #ffcc00); color: #ffd700; }
+.theme-royal { background: linear-gradient(120deg, #001144, #3300cc); color: #b3aaff; }
+.theme-matrix { background: radial-gradient(circle, #000, #001100); color: #00ff66; }
+.theme-cyber { background: linear-gradient(135deg, #111, #440044); color: #ff00cc; }
+.theme-pastel { background: linear-gradient(145deg, #fef6f9, #f6faff); color: #333; }
+.theme-solar { background: linear-gradient(145deg, #140f00, #ffae00); color: #fffbe5; }
+.theme-aqua { background: linear-gradient(135deg, #002244, #00ffff); color: #eaffff; }
+.theme-galaxy { background: radial-gradient(circle at top left, #0a0022, #000010, #050022); color: #9b7fff; }
+.theme-emerald { background: linear-gradient(135deg, #002b20, #00cc99); color: #caffeb; }
+.theme-ruby { background: linear-gradient(135deg, #250000, #cc0033); color: #ffe5e5; }
 
-.panel-footer{margin-top:8px}
-.controls{display:flex;gap:8px;align-items:center}
-.novel-controls{display:flex;gap:8px;align-items:center;margin-bottom:8px}
-.post-form input,.post-form textarea{width:100%;padding:10px;border-radius:8px;background:#0c0d12;border:1px solid rgba(255,255,255,0.02);color:inherit;margin-bottom:8px}
-.post-form button{background:var(--accent);color:#001;padding:8px 12px;border-radius:8px;border:0}
+/* ====== Sidebar ====== */
+#sidebar {
+    width: 260px;
+    background: rgba(15, 15, 15, 0.95);
+    height: 100vh;
+    position: fixed;
+    left: -260px;
+    top: 0;
+    transition: left 0.35s ease-in-out;
+    padding: 20px;
+    border-right: 2px solid #00ffcc;
+    backdrop-filter: blur(8px);
+    overflow-y: auto;
+    z-index: 100;
+}
+#sidebar.active { left: 0; }
 
-.theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(44px,1fr));gap:8px;padding:12px}
-.theme-swatch{height:44px;border-radius:8px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.5)}
-.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);z-index:30}
-.hidden{display:none}
-.modal-inner{background:linear-gradient(180deg,#071023,#0b1018);border-radius:12px;padding:12px;width:min(980px,96%);box-shadow:0 20px 60px rgba(0,0,0,0.7)}
+#sidebar h2 {
+    text-align: center;
+    font-size: 1.8em;
+    color: #00ffcc;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px #00ffcc;
+}
+#sidebar ul { list-style: none; }
+#sidebar ul li {
+    margin: 12px 0;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+#sidebar ul li:hover {
+    background: rgba(0, 255, 204, 0.15);
+    transform: translateX(5px);
+    color: #00ffee;
+    text-shadow: 0 0 10px #00ffcc;
+}
 
-.bg-layer{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 10% 20%, rgba(0,229,255,0.06), transparent 8%), radial-gradient(circle at 90% 80%, rgba(255,51,204,0.03), transparent 10%);transition:all .6s}
-body.light{--bg:#f6f7fb;--panel:#ffffff;--text:#111;--glass:rgba(0,0,0,0.03);--accent:#4dabf7}
+/* ====== Sidebar Toggle ====== */
+#sidebarToggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 200;
+    cursor: pointer;
+    font-size: 1.8em;
+    color: #00ffcc;
+    transition: 0.3s;
+}
+#sidebarToggle:hover { transform: scale(1.1); color: #00ffee; }
 
-/* theme classes (a few examples; script will add 100+ dynamically) */
-.neon{--accent:#00e5ff}
-.violet{--accent:#a16bf2}
-.crimson{--accent:#ff3b3b}
-.emerald{--accent:#00c97e}
+/* ====== Main Content ====== */
+.main-content {
+    margin-left: 0;
+    padding: 25px;
+    transition: margin-left 0.35s;
+}
+#sidebar.active ~ .main-content { margin-left: 260px; }
 
-/* responsive */
-@media(max-width:900px){
-  .main{grid-template-columns:1fr}
-  .drawer{width:220px}
+/* ====== Panels ====== */
+.panel {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+.panel.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Chat Window ====== */
+#chatWindow {
+    background: rgba(25, 25, 25, 0.85);
+    border-radius: 15px;
+    padding: 20px;
+    height: 420px;
+    overflow-y: auto;
+    border: 2px solid #00ffcc;
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.3);
+}
+.chat-message {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 12px;
+    max-width: 75%;
+    line-height: 1.4;
+    animation: slideIn 0.3s ease;
+}
+.chat-message.user {
+    background: linear-gradient(135deg, #00aaff55, #0066ff22);
+    align-self: flex-end;
+    border: 1px solid #00aaff;
+}
+.chat-message.ai {
+    background: linear-gradient(135deg, #00ffcc33, #00ffaa11);
+    border: 1px solid #00ffcc;
+}
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Chat Form ====== */
+#chatForm {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+#chatForm input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #00ffcc;
+    background: #111;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+#chatForm input[type="text"]:focus {
+    border-color: #00ffee;
+    box-shadow: 0 0 10px #00ffee;
+}
+#chatForm button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, #00ffcc, #0099ff);
+    color: #111;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+#chatForm button:hover {
+    background: linear-gradient(135deg, #00ffee, #00aaff);
+    box-shadow: 0 0 10px #00ffcc;
+}
+
+/* ====== Multi-task Panels ====== */
+.multi-task-panel, .marketplace-panel, .trading-panel {
+    display: none;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+    animation: fadeIn 0.4s ease;
+}
+.task-card {
+    flex: 1 1 180px;
+    padding: 15px;
+    background: rgba(0,255,204,0.15);
+    border: 2px solid #00ffcc;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+    color: #00ffee;
+    box-shadow: 0 0 15px rgba(0,255,204,0.1);
+    transition: all 0.4s;
+}
+.task-card:hover {
+    transform: translateY(-6px) scale(1.05);
+    background: rgba(0,255,204,0.35);
+    box-shadow: 0 0 25px rgba(0,255,204,0.4);
+}
+
+/* ====== Marketplace ====== */
+#searchBar {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 2px solid #00ffcc;
+    background: rgba(20,20,20,0.8);
+    color: #00ffee;
+    margin-bottom: 20px;
+    outline: none;
+}
+#searchBar:focus { box-shadow: 0 0 10px #00ffee; }
+
+.market-item {
+    background: rgba(0,255,204,0.1);
+    border: 1px solid #00ffcc;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s, background 0.3s;
+}
+.market-item:hover {
+    background: rgba(0,255,204,0.25);
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0,255,204,0.3);
+}
+
+/* ====== Trading ====== */
+.trading-panel div {
+    margin: 5px 0;
+    font-size: 0.95em;
+    padding: 5px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+}
+.trading-panel button {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #00ffcc, #00aaff);
+    color: #111;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.trading-panel button:hover {
+    background: linear-gradient(135deg, #00ffee, #0099ff);
+    box-shadow: 0 0 15px #00ffcc;
+}
+
+/* ====== Panels general */
+#settings, #analytics, #aiEngine, #languages, #memory, #notifications, #security {
+    padding: 20px;
+    background: rgba(20,20,20,0.6);
+    border-radius: 15px;
+    border: 2px solid rgba(0,255,204,0.2);
+    box-shadow: 0 0 15px rgba(0,255,204,0.1);
+}
+
+/* ====== Scrollbar ====== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb {
+    background: #00ffcc;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover { background: #00ffee; }
+
+/* ====== Responsive ====== */
+@media (max-width: 900px) {
+    #sidebar { left: -260px; }
+    #sidebar.active ~ .main-content { margin-left: 0; }
+    .task-card { flex: 1 1 45%; }
+}
+@media (max-width: 480px) {
+    .task-card { flex: 1 1 100%; }
+    #chatWindow { height: 320px; }
+}
+/* healthcare_panel.css */
+#healthcarePanel {
+  background: #1e1e2f;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  color: #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#healthcarePanel h3 {
+  margin-bottom: 12px;
+  font-size: 1.5em;
+  color: #ffffff;
+}
+
+#healthcarePanel textarea,
+#healthcarePanel input,
+#healthcarePanel select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #2c2c3e;
+  color: #fff;
+  font-size: 1em;
+}
+
+#healthcarePanel button {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s;
+}
+
+#healthcarePanel button:hover {
+  background: #357ab8;
+}
+
+#healthcarePanel .results {
+  margin-top: 12px;
+  padding: 10px;
+  background: #2c2c3e;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#healthcarePanel .results p {
+  margin: 6px 0;
+  font-size: 0.95em;
 }

@@ -1,0 +1,17 @@
+{
+  "records": [
+    {
+      "user_id": "demo_user_001",
+      "plan": "Starter",
+      "amount": 19.99,
+      "status": "active",
+      "start_date": "2025-10-29T00:00:00Z",
+      "upgrade_available": true,
+      "next_upgrade_options": [
+        { "plan": "Pro", "price": 29.99 },
+        { "plan": "Elite", "price": 99.99 }
+      ],
+      "transaction_id": "payn_DEMO_001"
+    }
+  ]
+}

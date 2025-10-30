@@ -842,3 +842,5 @@ if __name__ == "__main__":
 app.config['CACHE_TYPE'] = 'simple'
 app.config['CACHE_DEFAULT_TIMEOUT'] = 300
 cache = Cache(app)
+from auto_register import register_all_blueprints
+register_all_blueprints(app)

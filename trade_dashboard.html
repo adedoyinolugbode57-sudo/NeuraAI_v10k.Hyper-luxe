@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuraAI HyperLuxe Trade Dashboard</title>
+<link rel="stylesheet" href="trade_dashboard.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script defer src="trade_dashboard.js"></script>
+</head>
+<body>
+
+<div id="dashboard">
+
+  <!-- Header -->
+  <header class="dashboard-header">
+    <h1>💹 HyperLuxe Exchange</h1>
+    <div class="header-info">
+      <span id="portfolioValue">Total Portfolio: $0.00</span>
+      <span id="activeTokens">Active Tokens: 0</span>
+    </div>
+  </header>
+
+  <!-- Portfolio Summary Widgets -->
+  <section class="portfolio-summary">
+    <div class="summary-widget" id="dailyGain"><h4>📈 Daily Gain</h4><span>$0.00</span></div>
+    <div class="summary-widget" id="weeklyGain"><h4>📅 Weekly Gain</h4><span>$0.00</span></div>
+    <div class="summary-widget" id="monthlyGain"><h4>🗓 Monthly Gain</h4><span>$0.00</span></div>
+    <div class="summary-widget" id="totalGain"><h4>🏆 Total Gain</h4><span>$0.00</span></div>
+  </section>
+
+  <!-- Top Movers & Losers -->
+  <section class="top-movers">
+    <h3>Top Movers & Losers</h3>
+    <div id="topGainers"></div>
+    <div id="topLosers"></div>
+  </section>
+
+  <!-- Portfolio Allocation Chart -->
+  <section class="portfolio-charts">
+    <h3>Portfolio Allocation</h3>
+    <canvas id="portfolioChart" width="400" height="400"></canvas>
+  </section>
+
+  <!-- Advanced Trade Execution -->
+  <section class="trade-execution">
+    <h3>Execute Trade</h3>
+    <div class="trade-controls">
+      <select id="tradeCoin"></select>
+      <input id="tradeAmount" type="number" placeholder="Amount">
+      <select id="tradeType">
+        <option value="buy">Buy Limit</option>
+        <option value="sell">Sell Limit</option>
+        <option value="buyMarket">Buy Market</option>
+        <option value="sellMarket">Sell Market</option>
+      </select>
+      <input type="number" id="tradePrice" placeholder="Price (optional)">
+      <button id="executeTrade">Execute</button>
+    </div>
+    <div id="tradeLog" class="trade-log"></div>
+  </section>
+
+  <!-- Candlestick Chart -->
+  <section class="candlestick-chart">
+    <h3>📊 Market Charts</h3>
+    <canvas id="candlestickChart" width="600" height="400"></canvas>
+  </section>
+
+  <!-- Order Book -->
+  <section class="order-book">
+    <h3>📚 Order Book</h3>
+    <div class="order-book-tables">
+      <table id="orderBookBids">
+        <thead><tr><th>Price</th><th>Amount</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <table id="orderBookAsks">
+        <thead><tr><th>Price</th><th>Amount</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Recent Trades Feed -->
+  <section class="recent-trades">
+    <h3>🔥 Recent Trades</h3>
+    <ul id="recentTrades"></ul>
+  </section>
+
+  <!-- Top Tokens Carousel -->
+  <section class="top-carousel">
+    <h3>⭐ Top Tokens</h3>
+    <div class="carousel" id="topTokensCarousel"></div>
+  </section>
+
+  <!-- Token Table -->
+  <section class="token-table">
+    <h3>All Tokens</h3>
+    <input type="text" id="searchToken" placeholder="Search token...">
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Symbol</th>
+          <th>Price</th>
+          <th>24h Change</th>
+          <th>Market Cap</th>
+        </tr>
+      </thead>
+      <tbody id="tokenTableBody"></tbody>
+    </table>
+  </section>
+
+  <!-- Watchlist & Favorites -->
+  <section class="watchlist-favorites">
+    <div id="watchlistWidget"><h4>👀 Watchlist</h4><ul></ul></div>
+    <div id="favoritesWidget"><h4>💖 Favorites</h4><ul></ul></div>
+  </section>
+
+  <!-- Alerts & Signals -->
+  <section class="alerts-signals">
+    <h3>⚡ Alerts & Signals</h3>
+    <ul id="alertsList"></ul>
+  </section>
+
+  <!-- Market Depth -->
+  <section class="market-depth">
+    <h3>📈 Market Depth</h3>
+    <canvas id="marketDepthChart" width="400" height="300"></canvas>
+  </section>
+
+  <!-- Analytics Widgets -->
+  <section class="analytics-widgets">
+    <div class="widget" id="volatilityIndex"><h4>Volatility Index</h4></div>
+    <div class="widget" id="dominanceBTC"><h4>BTC Dominance</h4></div>
+    <div class="widget" id="dominanceETH"><h4>ETH Dominance</h4></div>
+    <div class="widget" id="liquidityScore"><h4>Liquidity Score</h4></div>
+    <div class="widget" id="tradeVolume"><h4>24h Volume</h4></div>
+    <div class="widget" id="activePairs"><h4>Active Pairs</h4></div>
+    <div class="widget" id="avgPriceChange"><h4>Avg 24h Change</h4></div>
+    <div class="widget" id="topExchanges"><h4>Top Exchanges</h4></div>
+    <div class="widget" id="fundingRates"><h4>Funding Rates</h4></div>
+    <div class="widget" id="socialSentiment"><h4>Social Sentiment</h4></div>
+  </section>
+
+  <!-- Extra Panels -->
+  <section class="extra-panels">
+    <div class="panel" id="newsPanel"><h4>Crypto News</h4></div>
+    <div class="panel" id="alertsPanel"><h4>Alerts & Signals</h4></div>
+    <div class="panel" id="favoritesPanel"><h4>Favorite Coins</h4></div>
+    <div class="panel" id="watchlistPanel"><h4>Watchlist</h4></div>
+    <div class="panel" id="stakingPanel"><h4>Staking Dashboard</h4></div>
+    <div class="panel" id="lendingPanel"><h4>Lending & Borrowing</h4></div>
+    <div class="panel" id="nftPanel"><h4>NFT Marketplace</h4></div>
+    <div class="panel" id="walletsPanel"><h4>Multi-Wallet Manager</h4></div>
+    <div class="panel" id="performancePanel"><h4>Portfolio Performance</h4></div>
+    <div class="panel" id="heatmapPanel"><h4>Token Heatmap</h4></div>
+  </section>
+
+</div>
+
+</body>
+</html>
+<!-- Feedback Widget -->
+<section class="feedback-widget">
+  <h3>💬 Submit Feedback</h3>
+  <input type="text" id="fbUsername" placeholder="Your Name (optional)" />
+  <select id="fbRating">
+    <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+    <option value="4">⭐️⭐️⭐️⭐️</option>
+    <option value="3">⭐️⭐️⭐️</option>
+    <option value="2">⭐️⭐️</option>
+    <option value="1">⭐️</option>
+  </select>
+  <input type="text" id="fbCategory" placeholder="Category (bug, feature, general)" />
+  <textarea id="fbMessage" placeholder="Your feedback..."></textarea>
+  <button id="submitFeedback">Submit</button>
+
+  <div class="feedback-stats">
+    <h4>📊 Live Stats</h4>
+    <div>Total Feedback: <span id="totalFeedback">0</span></div>
+    <div>Average Rating: <span id="avgRating">0</span> ⭐️</div>
+  </div>
+</section>

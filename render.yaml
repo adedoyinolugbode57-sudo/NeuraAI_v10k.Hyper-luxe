@@ -2,12 +2,12 @@ services:
   - type: web
     name: NeuraAI_v10k_Hyperluxe
     env: python
-    region: frankfurt  # you can change to oregon, singapore, etc.
+    region: frankfurt  # change to oregon/singapore if preferred
     plan: free
     buildCommand: |
       pip install -r requirements.txt
     startCommand: |
-      gunicorn main:app --workers=2 --threads=4 --timeout=120
+      gunicorn neura_router:app --workers=2 --threads=4 --timeout=120
     envVars:
       - key: DATABASE_URL
         fromDatabase:

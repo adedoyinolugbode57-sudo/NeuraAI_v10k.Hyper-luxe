@@ -111,3 +111,32 @@ body {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Scrollbar */
+#chatContainer::-webkit-scrollbar { width: 8px; }
+#chatContainer::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
+#chatContainer::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 4px; box-shadow: 0 0 5px var(--neon-blue); transition: 0.3s; }
+#chatContainer::-webkit-scrollbar-thumb:hover { background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+#chatContainer { scrollbar-width: thin; scrollbar-color: var(--neon-blue) rgba(255,255,255,0.05); }
+
+/* Neon pop effect */
+.message.new { animation: popIn 0.35s ease-out, glowPulse 1.2s ease-in-out infinite alternate; }
+.message.user.new { animation: popIn 0.35s ease-out, glowPulseUser 1.2s ease-in-out infinite alternate; }
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 4px var(--neon-blue); }
+  50% { box-shadow: 0 0 12px var(--neon-blue); }
+  100% { box-shadow: 0 0 4px var(--neon-blue); }
+}
+
+@keyframes glowPulseUser {
+  0% { box-shadow: 0 0 4px var(--neon-purple); }
+  50% { box-shadow: 0 0 12px var(--neon-purple); }
+  100% { box-shadow: 0 0 4px var(--neon-purple); }
+}

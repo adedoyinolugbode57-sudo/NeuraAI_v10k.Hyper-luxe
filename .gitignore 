@@ -1,0 +1,44 @@
+# Environment & secrets
+.env
+env.py
+env.sample
+
+# Python cache & compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+chat_logs.json
+memory_store.json
+
+# Database / local files
+*.db
+
+# IDE / OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Frontend / static build
+node_modules/
+dist/
+build/
+
+# Render / deployment
+render.yaml
+Procfile
+runtime.txt
+
+# JSON / roadmap / modules
+ideas_roadmap.json
+modules.json
+
+# Backup or temporary files
+*.bak
+*.tmp
+
+# Misc
+*.swp

@@ -43,3 +43,7 @@ MEMORY_STORE_PATH = os.getenv("MEMORY_STORE_PATH", str(PROJECT_ROOT / "data" / "
 HOST = os.getenv("HOST", "0.0.0.0")
 PORT = int(os.getenv("PORT", "5000"))
 ADMIN_TOKEN = os.getenv("NEURA_ADMIN_TOKEN", "change_me_admin_token")
+# Premium Hyperluxe Options
+ENABLE_NEON_UI: bool = os.getenv("ENABLE_NEON_UI", "true").lower() == "true"
+MAX_CONCURRENT_REQUESTS: int = int(os.getenv("MAX_CONCURRENT_REQUESTS", "10"))
+LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")  # DEBUG, INFO, WARNING, ERROR

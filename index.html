@@ -1,157 +1,223 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NeuraAI_v10k • Hyper-Luxe</title>
-  <link rel="stylesheet" href="/static/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuraluxe-AI Premium</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div id="app" class="theme-dark neon">
-    <!-- Top bar -->
-    <header class="topbar">
-      <div class="left">
-        <button id="openDrawer" class="icon">☰</button>
-        <div class="brand">NeuraAI_v10k <span class="tag">Hyper-Luxe</span></div>
-      </div>
-      <div class="right">
-        <select id="quickTheme" title="Quick theme (dropdown)"></select>
-        <button id="openGrid" title="Open full theme grid" class="icon">🎨</button>
-        <select id="langSelect" title="Language"></select>
-        <button id="avatarToggle" class="icon" title="Toggle avatar">🧠</button>
-        <button id="modeToggle" class="icon" title="Dark / Light">🌗</button>
-      </div>
-    </header>
+<body class="theme-neon">
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <h2>🧠 Neuraluxe-AI</h2>
 
-    <!-- Sidebar drawer -->
-    <aside id="drawer" class="drawer">
-      <div class="drawer-top">
-        <h2>NeuraAI</h2>
-        <button id="closeDrawer" class="icon">×</button>
-      </div>
-      <nav class="nav">
-        <button class="nav-item" data-section="chat">💬 Chat</button>
-        <button class="nav-item" data-section="education">📘 Education</button>
-        <button class="nav-item" data-section="novels">📚 Novels</button>
-        <button class="nav-item" data-section="web">🌐 Web Search</button>
-        <button class="nav-item" data-section="crypto">💹 Crypto</button>
-        <button class="nav-item" data-section="community">👥 Community</button>
-        <button class="nav-item" data-section="games">🎮 Mini-Games</button>
-        <button class="nav-item" data-section="settings">⚙️ Settings</button>
-      </nav>
-      <footer class="drawer-foot">Created by CHATGPT + Joshua Dav</footer>
-    </aside>
+        <label for="themeSelector">Theme:</label>
+        <select id="themeSelector">
+            <option value="theme-neon">Neon</option>
+            <option value="theme-dark">Dark</option>
+            <option value="theme-light">Light</option>
+            <option value="theme-blue">Blue</option>
+            <option value="theme-pink">Pink</option>
+        </select>
 
-    <!-- Main content -->
-    <main class="main">
-      <!-- Chat -->
-      <section id="chat" class="panel active">
-        <div class="panel-header"><h3>Chat Assistant</h3>
-          <div class="panel-actions">
-            <button id="voiceBtn" title="Voice input/output">🎙️</button>
-            <button id="summaryBtn" title="AI Auto-Summary">📝 Summary</button>
-          </div>
-        </div>
-        <div id="chatWindow" class="chat-window" aria-live="polite"></div>
-        <form id="chatForm" class="chat-form">
-          <input id="chatInput" autocomplete="off" placeholder="Ask NeuraAI anything..." />
-          <button type="submit">Send</button>
-        </form>
-      </section>
-
-      <!-- Education -->
-      <section id="education" class="panel">
-        <div class="panel-header"><h3>Subject Trainer</h3></div>
-        <div class="controls">
-          <select id="subjectSelect"><option>Math</option><option>Science</option><option>Language</option><option>History</option></select>
-          <button id="startLesson">Start Lesson</button>
-        </div>
-        <div id="lessonArea" class="panel-body">Choose a subject and start a lesson.</div>
-      </section>
-
-      <!-- Novels -->
-      <section id="novels" class="panel">
-        <div class="panel-header"><h3>Novel Universe</h3></div>
-        <div class="novel-controls">
-          <input id="novelSearch" placeholder="Search titles or authors" />
-          <select id="novelCat"><option value="">All</option><option value="anime">Anime</option><option value="animation">Animation</option><option value="real-life">Real-life</option></select>
-          <button id="novelFilter">Filter</button>
-        </div>
-        <div id="novelList" class="panel-body">Loading novels...</div>
-      </section>
-
-      <!-- Web -->
-      <section id="web" class="panel">
-        <div class="panel-header"><h3>Smart Web Search</h3></div>
-        <div class="controls">
-          <input id="webQuery" placeholder="Search the web (safe mode)..." />
-          <button id="webSearchBtn">Search</button>
-        </div>
-        <div id="webResults" class="panel-body"></div>
-      </section>
-
-      <!-- Crypto -->
-      <section id="crypto" class="panel">
-        <div class="panel-header"><h3>Crypto Insights</h3>
-          <div class="panel-actions"><button id="refreshCrypto">↻ Refresh</button></div>
-        </div>
-        <div id="cryptoFeed" class="panel-body">Loading crypto data...</div>
-        <div id="portfolioArea" class="panel-footer">
-          <input id="portfolioInput" placeholder='{"bitcoin":0.01,"ethereum":0.1}' />
-          <button id="portfolioBtn">Value</button>
-        </div>
-      </section>
-
-      <!-- Community -->
-      <section id="community" class="panel">
-        <div class="panel-header"><h3>Community Feed</h3></div>
-        <form id="postForm" class="post-form">
-          <input id="postUser" placeholder="Your name" required />
-          <textarea id="postContent" placeholder="Share something..." required></textarea>
-          <button type="submit">Post</button>
-        </form>
-        <div id="feedList" class="panel-body">Loading community posts...</div>
-      </section>
-
-      <!-- Games -->
-      <section id="games" class="panel">
-        <div class="panel-header"><h3>Mini-Games</h3></div>
-        <div class="panel-body">
-          <button id="tttNew">Tic-Tac-Toe (New)</button>
-          <button id="numNew">Number Guess</button>
-          <div id="gameArea"></div>
-        </div>
-      </section>
-
-      <!-- Settings -->
-      <section id="settings" class="panel">
-        <div class="panel-header"><h3>Settings</h3></div>
-        <div class="settings-grid panel-body">
-          <label><input type="checkbox" id="toggleAnimations"> Enable Animations</label>
-          <label><input type="checkbox" id="toggleSound"> Enable Sound FX</label>
-          <label><input type="checkbox" id="toggleBgAnim"> Animated Background</label>
-          <label>Theme grid: <button id="openThemeGridSmall">Open</button></label>
-          <label>Auto-save preferences: <input type="checkbox" id="autosavePref" checked /></label>
-        </div>
-      </section>
-    </main>
-
-    <!-- full theme grid modal -->
-    <div id="themeModal" class="modal hidden">
-      <div class="modal-inner">
-        <header><h3>Choose a Theme</h3><button id="closeThemeGrid">×</button></header>
-        <div id="themeGrid" class="theme-grid"></div>
-        <footer><button id="applyTheme">Apply</button></footer>
-      </div>
+        <ul>
+            <li onclick="showPanel('chat')">💬 Chat</li>
+            <li onclick="showPanel('multiTask')">⚙️ Multi-Task</li>
+            <li onclick="showPanel('marketplace')">🛒 Marketplace</li>
+            <li onclick="showPanel('trading')">📈 Trading</li>
+            <li onclick="showPanel('analytics')">📊 Analytics</li>
+            <li onclick="showPanel('aiEngine')">🤖 AI Engine</li>
+            <li onclick="showPanel('languages')">🌍 Languages</li>
+            <li onclick="showPanel('memory')">💾 Memory</li>
+            <li onclick="showPanel('notifications')">🔔 Notifications</li>
+            <li onclick="showPanel('security')">🔐 Security</li>
+            <li onclick="showPanel('settings')">⚙️ Settings</li>
+        </ul>
     </div>
 
-    <!-- subtle animated background layers -->
-    <div id="bgLayer" class="bg-layer"></div>
+    <div id="sidebarToggle">☰</div>
 
-    <audio id="sndPop" src="/static/sounds/pop.mp3" preload="auto"></audio>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Chat Panel -->
+        <div id="chatWindow" class="panel active">
+            <div class="chat-message ai">👋 Hello! Welcome to Neuraluxe-AI Premium.</div>
+        </div>
+        <form id="chatForm" class="panel active">
+            <input type="text" id="chatInput" placeholder="Type your message...">
+            <button type="submit">Send</button>
+        </form>
 
-  </div>
+        <!-- Multi-task Panel -->
+        <div id="multiTask" class="multi-task-panel panel">
+            <div class="task-card">Healthcare</div>
+            <div class="task-card">Education</div>
+            <div class="task-card">Website Browse</div>
+            <div class="task-card">Marketplace</div>
+            <div class="task-card">Trading</div>
+            <div class="task-card">Analytics</div>
+            <div class="task-card">AI Engine</div>
+            <div class="task-card">Microtransactions</div>
+            <div class="task-card">Language Hub</div>
+            <div class="task-card">Memory System</div>
+            <div class="task-card">Scheduler</div>
+            <div class="task-card">Voice Assistant</div>
+            <div class="task-card">Freelancer Panel</div>
+            <div class="task-card">Client Hub</div>
+            <div class="task-card">Smart Payments</div>
+            <div class="task-card">Cross-Border API</div>
+            <div class="task-card">Data Studio</div>
+            <div class="task-card">AI Games</div>
+            <div class="task-card">Update Center</div>
+            <div class="task-card">Translation Hub</div>
+        </div>
 
-  <script src="/static/script.js"></script>
+        <!-- Marketplace Panel -->
+        <div id="marketplace" class="marketplace-panel panel">
+            <input type="text" id="searchBar" placeholder="🔍 Search items..." />
+            <div id="marketItems"></div>
+        </div>
+
+        <!-- Trading Panel -->
+        <div id="trading" class="trading-panel panel">
+            <div>Current Funds: $500,000</div>
+            <div>Daily Profit: $1,200</div>
+            <div>History: Buy / Sell / Profit</div>
+            <button onclick="alert('Trading Bot Activated!')">Start Trading</button>
+        </div>
+
+        <!-- Analytics Panel -->
+        <div id="analytics" class="panel">
+            <h3>Analytics Dashboard</h3>
+            <p>AI usage, revenue growth, and performance metrics will display here.</p>
+        </div>
+
+        <!-- AI Engine Panel -->
+        <div id="aiEngine" class="panel">
+            <h3>AI Engine Control</h3>
+            <p>Customize GPT-5 personality, tone, and automation levels.</p>
+        </div>
+
+        <!-- Languages Panel -->
+        <div id="languages" class="panel">
+            <h3>Language Hub (2000+ Supported)</h3>
+            <p>Includes Yoruba, Igbo, Hausa, Zulu, French, Japanese, Korean, Mandarin, Arabic, etc.</p>
+        </div>
+
+        <!-- Memory Panel -->
+        <div id="memory" class="panel">
+            <h3>Memory System</h3>
+            <p>Stores long-term user preferences and project states.</p>
+        </div>
+
+        <!-- Notifications -->
+        <div id="notifications" class="panel">
+            <h3>Notifications</h3>
+            <p>All system alerts, updates, and AI pings appear here.</p>
+        </div>
+
+        <!-- Security -->
+        <div id="security" class="panel">
+            <h3>Security Center</h3>
+            <p>Manage encryption, sessions, and account protections.</p>
+        </div>
+
+        <!-- Settings Panel -->
+        <div id="settings" class="panel">
+            <h3>Settings</h3>
+            <p>Founder: <strong>CHATGPT + Joshua Dav</strong></p>
+            <p>Free Account: <strong>906 500 9869 (Adedoyin Olugbode)</strong></p>
+            <p>Cross-Border Payments up to <strong>$50,000+</strong></p>
+            <p>Subscribers: Unlimited Access</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Marketplace Generation
+        const marketContainer = document.getElementById("marketItems");
+        const searchBar = document.getElementById("searchBar");
+
+        const totalItems = 1000; // realistic size for performance
+        const products = [];
+
+        for (let i = 1; i <= totalItems; i++) {
+            const price = (Math.random() * 970 + 29.99).toFixed(2);
+            const itemName = `Item #${i} - $${price}`;
+            products.push(itemName);
+        }
+
+        function renderMarketplace(filter = "") {
+            marketContainer.innerHTML = "";
+            const filtered = products.filter(p =>
+                p.toLowerCase().includes(filter.toLowerCase())
+            );
+            filtered.forEach(p => {
+                const item = document.createElement("div");
+                item.classList.add("market-item");
+                item.textContent = p;
+                marketContainer.appendChild(item);
+            });
+        }
+
+        searchBar.addEventListener("input", e => renderMarketplace(e.target.value));
+        renderMarketplace();
+    </script>
 </body>
 </html>
+<!-- Healthcare Panel -->
+<section class="healthcare-panel">
+  <h3>🩺 Health Assistant</h3>
+
+  <!-- Symptom Checker -->
+  <div class="symptom-checker">
+    <input id="symptomsInput" type="text" placeholder="Describe your symptoms..." />
+    <button id="checkSymptomsBtn">Check</button>
+    <p id="symptomResult"></p>
+  </div>
+
+  <!-- Medication Lookup -->
+  <div class="medication-lookup">
+    <input id="medicationInput" type="text" placeholder="Enter medication name..." />
+    <button id="lookupMedBtn">Lookup</button>
+    <div id="medResult"></div>
+  </div>
+</section>
+
+<script>
+  // Symptom Checker
+  document.getElementById("checkSymptomsBtn").addEventListener("click", async () => {
+    const symptoms = document.getElementById("symptomsInput").value.trim();
+    if (!symptoms) return;
+    const res = await fetch("/api/health/symptoms", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({symptoms})
+    });
+    const data = await res.json();
+    document.getElementById("symptomResult").textContent = data.result || "No advice available.";
+  });
+
+  // Medication Lookup
+  document.getElementById("lookupMedBtn").addEventListener("click", async () => {
+    const drug = document.getElementById("medicationInput").value.trim();
+    if (!drug) return;
+    const res = await fetch("/api/health/medication", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({drug})
+    });
+    const data = await res.json();
+    const container = document.getElementById("medResult");
+    if (data.error) {
+      container.textContent = data.error;
+    } else {
+      container.innerHTML = `
+        <strong>${data.brand_name || data.results?.[0]?.name || "N/A"}</strong> 
+        <br>Manufacturer: ${data.manufacturer || "Unknown"}
+        <br>Purpose: ${data.purpose || "N/A"}
+        <br>Source: ${data.source || "N/A"}
+      `;
+    }
+  });
+</script>

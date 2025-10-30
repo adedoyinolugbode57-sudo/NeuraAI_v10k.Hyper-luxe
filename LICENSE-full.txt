@@ -1,0 +1,45 @@
+NEURALUXE TECHNOLOGIES PROPRIETARY LICENSE (2025)
+
+IMPORTANT — READ CAREFULLY:
+This Neuraluxe Technologies Proprietary License (the "Agreement") is a legal agreement between You (either an individual or a single entity) and Neuraluxe Technologies ("Neuraluxe") governing your use of the software, services, documentation and other materials provided herewith (collectively, the "Software").
+
+1. GRANT OF LICENSE
+Neuraluxe grants You a non-exclusive, non-transferable, revocable license to use the Software subject to the terms in this Agreement. Unless otherwise agreed in a separate written agreement, this license is for internal use only and does not permit sublicensing, resale, or distribution.
+
+2. RESTRICTIONS
+You shall not, and shall not permit others to, directly or indirectly:
+  a) reverse engineer, decompile, disassemble, or otherwise attempt to derive the source code of the Software, except to the extent expressly permitted by applicable law;
+  b) copy, distribute, sublicense, rent, lease, or transfer the Software to any third party;
+  c) modify, adapt, translate, or create derivative works based upon the Software;
+  d) use the Software to develop a competing product or service.
+
+3. OWNERSHIP
+Neuraluxe and its licensors retain all proprietary rights in the Software. Except for the express license granted herein, Neuraluxe reserves all rights, title and interest in and to the Software.
+
+4. FEES, SUBSCRIPTIONS & PAYMENT
+Use of certain features of the Software may require payment of fees and subscription charges as described by Neuraluxe. All fees and charges are non-refundable except as required by applicable law. Neuraluxe reserves the right to change pricing and subscription tiers upon advance notice.
+
+5. PRIVACY & DATA
+You are responsible for any data you store or transmit using the Software. Neuraluxe may collect anonymized usage data for product improvement. Use of the Software may be subject to Neuraluxe's Privacy Policy (if provided).
+
+6. WARRANTY DISCLAIMER
+The Software is provided "AS IS" and "AS AVAILABLE", without warranties of any kind. Neuraluxe disclaims all implied warranties, including merchantability, fitness for a particular purpose, and non-infringement.
+
+7. LIMITATION OF LIABILITY
+To the fullest extent permitted by law, in no event shall Neuraluxe be liable for any indirect, incidental, special, punitive, or consequential damages arising from or related to this Agreement or the use of the Software.
+
+8. TERM & TERMINATION
+This Agreement is effective until terminated. Neuraluxe may terminate this Agreement immediately on notice if You breach any term. Upon termination, You shall cease all use of the Software and delete or return all copies in your possession.
+
+9. EXPORT & COMPLIANCE
+You agree to comply with all export and import laws and regulations preventing unauthorized export or re-export of the Software.
+
+10. GOVERNING LAW
+This Agreement shall be governed by and construed in accordance with the laws chosen by Neuraluxe in its official corporate domicile. Disputes will be resolved in the appropriate forum specified by Neuraluxe.
+
+11. ENTIRE AGREEMENT
+This Agreement constitutes the entire agreement between the parties and supersedes all prior or contemporaneous communications and proposals relating to the subject matter hereof.
+
+CONTACT
+Neuraluxe Technologies
+support@neuraluxe.ai
