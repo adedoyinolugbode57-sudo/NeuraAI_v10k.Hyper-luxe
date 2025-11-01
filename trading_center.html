@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neuraluxe Trading Center</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-dark">
+  <div id="sidebarToggle">☰</div>
+  <div id="sidebar">
+    <h2>Neuraluxe-AI</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="marketplace.html">Marketplace</a></li>
+      <li><a href="ai-chat.html">AI Chat</a></li>
+      <li class="active">Trading</li>
+      <li><a href="healthcare.html">Healthcare</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h1>📊 Neuraluxe Trading Dashboard</h1>
+    <p>Simulate or visualize real-time trading data powered by AI.</p>
+
+    <div class="market-grid" id="tradeGrid"></div>
+  </div>
+
+  <script>
+    const sidebarToggle = document.getElementById("sidebarToggle");
+    const sidebar = document.getElementById("sidebar");
+    sidebarToggle.addEventListener("click", () => sidebar.classList.toggle("active"));
+
+    const tradeGrid = document.getElementById("tradeGrid");
+    const stocks = ["BTC", "ETH", "SOL", "AAPL", "TSLA", "MSFT", "NEURA", "LUX"];
+    function renderTrades() {
+      tradeGrid.innerHTML = "";
+      stocks.forEach(sym => {
+        const price = (Math.random() * 5000 + 50).toFixed(2);
+        const change = (Math.random() * 10 - 5).toFixed(2);
+        const card = document.createElement("div");
+        card.className = "market-item-card";
+        card.innerHTML = `
+          <h3>${sym}</h3>
+          <p>💲${price}</p>
+          <p style="color:${change>0?"#00ff99":"#ff3366"}">${change}%</p>
+          <button class="buy-btn">Trade</button>`;
+        tradeGrid.appendChild(card);
+      });
+    }
+    renderTrades();
+    setInterval(renderTrades, 5000);
+  </script>
+</body>
+</html>
