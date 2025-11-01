@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Environments
+.env
+.env.local
+*.sqlite3
+*.db
+neuraluxe_full.db
+*.log
+
+# Node / frontend
+node_modules/
+dist/
+
+# Uploaded files / data
+uploads/
+static/audio/
+data/
+backups/
+
+# OS
+.DS_Store
+Thumbs.db

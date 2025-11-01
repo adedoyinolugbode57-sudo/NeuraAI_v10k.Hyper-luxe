@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neuraluxe-AI Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-neon">
+  <div id="sidebarToggle">☰</div>
+  <div id="sidebar">
+    <h2>Neuraluxe-AI</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="marketplace.html">Marketplace</a></li>
+      <li class="active">AI Chat</li>
+      <li><a href="trading-center.html">Trading</a></li>
+      <li><a href="healthcare.html">Healthcare</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h1>🤖 Neuraluxe Chat Assistant</h1>
+    <p>Your personal AI — responsive, glowing, and humanlike.</p>
+
+    <div id="chatWindow"></div>
+    <form id="chatForm">
+      <input type="text" id="chatInput" placeholder="Type your message..." />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    const sidebarToggle = document.getElementById("sidebarToggle");
+    const sidebar = document.getElementById("sidebar");
+    sidebarToggle.addEventListener("click", () => sidebar.classList.toggle("active"));
+
+    const chatWindow = document.getElementById("chatWindow");
+    const chatForm = document.getElementById("chatForm");
+    const chatInput = document.getElementById("chatInput");
+
+    chatForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const msg = chatInput.value.trim();
+      if (!msg) return;
+      appendMessage(msg, "user");
+      chatInput.value = "";
+
+      setTimeout(() => {
+        appendMessage("🤖 Neuraluxe: " + getResponse(msg), "ai");
+      }, 800);
+    });
+
+    function appendMessage(text, type) {
+      const div = document.createElement("div");
+      div.className = `chat-message ${type}`;
+      div.textContent = text;
+      chatWindow.appendChild(div);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    function getResponse(input) {
+      const responses = [
+        "I'm here to assist you instantly 💡",
+        "Let's make your workflow smoother ⚙️",
+        "That’s an interesting question!",
+        "I can analyze, generate, or automate — your choice."
+      ];
+      return responses[Math.floor(Math.random() * responses.length)];
+    }
+  </script>
+</body>
+</html>
