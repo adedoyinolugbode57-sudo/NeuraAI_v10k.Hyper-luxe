@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neuraluxe Developer Lab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-light">
+  <div id="sidebarToggle">☰</div>
+  <div id="sidebar">
+    <h2>Neuraluxe-AI</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="marketplace.html">Marketplace</a></li>
+      <li><a href="ai-chat.html">AI Chat</a></li>
+      <li><a href="trading-center.html">Trading</a></li>
+      <li><a href="healthcare.html">Healthcare</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h1>🧠 Neuraluxe Developer Lab</h1>
+    <p>Experiment with code, models, and automation ideas directly inside the AI Lab.</p>
+
+    <textarea id="codeArea" style="width:100%;height:200px;border:2px solid #00ffcc;border-radius:8px;background:#111;color:#00ffcc;padding:10px;"></textarea>
+    <button class="buy-btn" id="runBtn">Run Code</button>
+
+    <pre id="output" style="margin-top:15px;background:#111;color:#00ffcc;padding:10px;border-radius:8px;min-height:100px;"></pre>
+  </div>
+
+  <script>
+    const sidebarToggle=document.getElementById("sidebarToggle");
+    const sidebar=document.getElementById("sidebar");
+    sidebarToggle.addEventListener("click",()=>sidebar.classList.toggle("active"));
+
+    const runBtn=document.getElementById("runBtn");
+    const output=document.getElementById("output");
+    runBtn.addEventListener("click",()=>{
+      output.textContent="Running simulation...\n"+document.getElementById("codeArea").value;
+    });
+  </script>
+</body>
+</html>
