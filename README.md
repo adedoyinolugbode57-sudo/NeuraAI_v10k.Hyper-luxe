@@ -1,58 +1,106 @@
-# 🌌 NeuraAI_v10k.Hyperluxe  
-**Version 10k – The Ultimate AI Experience**  
-_Developed by Neura Labs | Powered by GPT-5 Intelligence_  
+# 💎 Neuraluxe-AI (NeuraAI_v10k.Hyperluxe)
 
-> **"One AI. Infinite Possibilities."**  
-> The Hyperluxe edition merges real-time AI automation, voice synthesis, crypto insights, games, and multilingual learning — all in one elegant system.
-
----
-
-## ✨ Key Features
-
-- 🧠 **GPT-5 Engine Integration** — Lightning-fast, 99% accurate reasoning.  
-- 🎤 **Dual Voice Assistant** — Polite Male + Cheerful Female with toggles.  
-- 🪙 **Crypto Insights & Market Advisor** — Live data and AI portfolio tips.  
-- 🎮 **Mini-Games & Trivia Hub** — 50+ smart challenges.  
-- 📚 **Book & Novel Platform** — Upload, read, or purchase novels (anime, real-life, fantasy).  
-- 💬 **Social Feed + Profiles** — Post updates and interact with AI-generated comments.  
-- 💾 **Memory Core** — Persistent chat memory via `memory_store.json`.  
-- 🎨 **Theme Engine** — 100+ color modes (Neon, Lux, Aurora, Cosmic).  
-- 🧾 **Automation Tools** — Cache rotation, analytics cleanup, smart background jobs.  
-- 🌍 **Multilingual Mode** — 100–200 supported languages.  
-- ⚙️ **Render-Optimized** — Works instantly with Render’s Python environment.
+> **Author:** ChatGPT + Joshua Dav  
+> **Version:** v10k.Hyperluxe  
+> **License:** Proprietary / All Rights Reserved  
+> **Deployment:** Render Cloud (Flask + Gunicorn)  
+> **Frontend:** HTML, CSS, JavaScript  
+> **Backend:** Flask, Flask-CORS, dotenv  
+> **Project Type:** Full-stack AI Ecosystem  
+> **Goal:** Revolutionize AI interaction, automation, and creativity across platforms.  
 
 ---
 
-## 💎 Premium Subscription ($6.99/mo)
+## 🧠 Overview
 
-Unlock advanced tools:  
-- 🧩 Offline AI Runtime  
-- 🧠 Hyper-Reasoning Models  
-- 🎧 Emotion-Adaptive Voices + Instant Translation  
-- 📊 Deep Analytics Dashboard  
-- 🛠️ Background Task Scheduler  
-- 🎮 Hyper Games Expansion (extra 50+)  
-- 🌐 AI-Web Search Integration  
+**Neuraluxe-AI** is a futuristic AI platform designed to merge **intelligence, creativity, and automation** into one immersive digital experience.
+
+The project combines:
+- Intelligent chat assistants
+- AI-powered automation
+- Freelancing tools
+- A vibrant neon-themed UI
+- Dynamic marketplace with 1000+ items
+- Real-time animations and transitions
+- Fully modular deployment for Render hosting
+
+Every component — from `main.py` to the animated loader — is optimized for **speed**, **fluidity**, and **premium-grade performance**.
 
 ---
 
-## 🚀 Deployment (Render)
+## ⚙️ Core Stack
 
-### 1️⃣ Upload Your Project  
-Push your folder to GitHub or upload directly to [Render.com](https://render.com).
+| Layer | Technology | Purpose |
+|-------|-------------|----------|
+| **Backend** | Flask | Main API and routing |
+| **CORS Layer** | Flask-CORS | Cross-origin request support |
+| **Environment Management** | python-dotenv | Secure .env loading |
+| **Web Server** | Gunicorn | Render deployment backend |
+| **Frontend UI** | HTML5 + CSS3 + Vanilla JS | Responsive, lightweight interface |
+| **Animations** | loader.js, loader.css | Smooth page transitions |
+| **Marketplace Engine** | JavaScript Grid | 1000 AI items rendered dynamically |
+| **Hosting** | Render Cloud | Stable production deployment |
+| **Memory Layer (Future)** | GPT Memory API | Context persistence for chat |
+| **Language Models** | GPT-3 → GPT-5 | Backend AI intelligence stack |
 
-### 2️⃣ Add a `render.yaml`  
-Render will auto-detect and build your service:
-```yaml
-services:
-  - type: web
-    name: neuraai-hyperluxe
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python main.py
-    plan: free
-    ## License
-This project is licensed under the Apache License 2.0 — a balance of freedom and protection.  
-You are free to explore, learn, and build upon this work,  
-but the soul of Neura-AI remains under the creative guardianship of its author.  
-© 2025 Joshua – All Rights Reserved.
+---
+
+## 🌈 Design Language
+
+Neuraluxe-AI features a **cyber-neon visual identity** inspired by modern luxury branding:
+
+- **Colors:** Teal (`#00ffcc`), Black (`#0d0d0d`), and Neon gradients  
+- **Typography:** “Poppins” Sans Serif  
+- **Effects:** Glow, blur, soft shadows  
+- **Motion:** Smooth fade-in transitions and 3D hover states  
+- **Mood:** Sleek, futuristic, premium  
+
+---
+
+## 🏗️ Folder Structure
+Neuraluxe-AI/ │ ├── main.py ├── requirements.txt ├── render.yaml ├── Procfile ├── .env │ ├── static/ │   ├── css/ │   │   ├── style.css │   │   ├── loader.css │   │   ├── theme.css │   │   └── glow.css │   ├── js/ │   │   ├── script.js │   │   ├── loader.js │   │   ├── popup.js │   │   ├── utils.js │   │   └── dynamic.js │   └── assets/ │       └── icons/ │ ├── templates/ │   ├── index.html │   ├── marketplace.html │   └── about.html │ └── README.md
+---
+
+## 🧩 Features Breakdown
+
+### 1. 💬 AI Chat Engine
+- Connects GPT-3 → GPT-5 for accurate and fluent interactions.
+- Multi-language support.
+- Dynamic context and tone control.
+- Option for offline and online modes.
+
+### 2. 🛍️ Marketplace System
+- Over **1000 AI-generated assets** displayed dynamically.
+- Built with JavaScript Grid layout.
+- Search, sort, and filter with live UI updates.
+- Responsive layout with CSS animations.
+- Popup modal confirmation for purchases.
+
+### 3. 🌐 Environment Validation
+- `.env` configuration with validation.
+- `/env/check` route to confirm all environment variables load correctly.
+- Auto-logs key environment summaries on startup.
+
+### 4. 🔄 Loader Animation
+- Smooth transition loader built with `loader.css` and `loader.js`.
+- Glowing spinner effect for visual continuity between pages.
+- Customizable duration and colors.
+
+### 5. ⚡ Ultra Performance
+- Optimized DOM rendering.
+- Lazy loading for images.
+- Render-friendly memory footprint.
+- Instant event listeners for all interactive buttons.
+
+---
+
+## 🧰 Environment Variables
+
+Make sure you have a `.env` file in your project root:
+
+```bash
+# Example .env file
+FLASK_ENV=production
+SECRET_KEY=supersecretkey
+API_KEY=your_api_key_here
+DEBUG=False

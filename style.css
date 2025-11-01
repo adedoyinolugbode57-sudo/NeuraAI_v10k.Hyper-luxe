@@ -336,3 +336,57 @@ body {
   margin: 6px 0;
   font-size: 0.95em;
 }
+/* Marketplace Grid */
+.market-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+.market-controls input, .market-controls select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #00ffcc;
+    background: #111;
+    color: #fff;
+}
+.market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+.market-item-card {
+    background: rgba(0,255,204,0.08);
+    border: 1px solid #00ffcc;
+    border-radius: 12px;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+.market-item-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00ffcc44;
+}
+.market-item-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+.market-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+.buy-btn {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00ffcc;
+    color: #111;
+    cursor: pointer;
+}
+.buy-btn:hover {
+    background-color: #00e6b8;
+}

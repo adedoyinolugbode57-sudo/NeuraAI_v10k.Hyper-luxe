@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neuraluxe Subscription Plans</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-blue">
+  <div id="sidebarToggle">☰</div>
+  <div id="sidebar">
+    <h2>Neuraluxe-AI</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="marketplace.html">Marketplace</a></li>
+      <li><a href="ai-chat.html">AI Chat</a></li>
+      <li><a href="trading-center.html">Trading</a></li>
+      <li><a href="healthcare.html">Healthcare</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h1>💰 Neuraluxe Premium Plans</h1>
+    <div class="market-grid">
+      <div class="market-item-card">
+        <h3>Basic — $19.99</h3>
+        <p>Access AI chat, learning & productivity tools.</p>
+        <button class="buy-btn">Subscribe</button>
+      </div>
+      <div class="market-item-card">
+        <h3>Pro — $49.99</h3>
+        <p>Includes automation, trading tools, and data analysis.</p>
+        <button class="buy-btn">Subscribe</button>
+      </div>
+      <div class="market-item-card">
+        <h3>Ultimate — $99.99</h3>
+        <p>Full AI Suite + Freelance Army integration 🔥</p>
+        <button class="buy-btn">Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sidebarToggle=document.getElementById("sidebarToggle");
+    const sidebar=document.getElementById("sidebar");
+    sidebarToggle.addEventListener("click",()=>sidebar.classList.toggle("active"));
+  </script>
+</body>
+</html>

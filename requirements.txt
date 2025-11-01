@@ -1,16 +1,54 @@
+# Core web framework
 Flask
 Flask-Cors
-gunicorn
-SQLAlchemy
-psycopg2-binary
-requests
-Flask-SocketIO
-python-socketio
-python-engineio
-eventlet
-psutil
+
+# OpenAI API
 openai
+
+# Database
+sqlite3 ; python_version < "3.12"  # optional for older Python versions
+
+# HTTP & Requests
+requests
+httpx
+
+# Async / Scheduler / Background
+apscheduler
+celery
+redis
+
+# Environment management
+python-dotenv
+
+# Data & Utils
+numpy
 pandas
-Werkzeug
+PyYAML
+python-dateutil
+tqdm
+
+# Security / Auth
 itsdangerous
-click
+passlib
+
+# Dev & Logging
+loguru
+
+# Optional voice / TTS
+gTTS
+playsound
+
+# Optional language translation
+googletrans
+
+# Optional image processing
+Pillow
+
+# Optional WebSockets (if needed for games / chat)
+websockets
+
+# Optional AI model utils
+sentence-transformers
+
+# Optional analytics & metrics
+prometheus-client
