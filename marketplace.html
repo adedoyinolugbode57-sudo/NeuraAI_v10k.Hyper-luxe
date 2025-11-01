@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neuraluxe-AI Marketplace</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #000 0%, #050505 100%);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Marketplace Controls */
+.market-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    gap: 10px;
+}
+.market-controls input, .market-controls select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #00ffcc;
+    background: #111;
+    color: #fff;
+    width: 48%;
+}
+
+/* Grid Layout */
+.market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+.market-item-card {
+    background: rgba(0,255,204,0.08);
+    border: 1px solid #00ffcc;
+    border-radius: 12px;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+.market-item-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00ffcc44;
+}
+.market-item-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+.market-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+.buy-btn {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00ffcc;
+    color: #111;
+    cursor: pointer;
+    font-weight: bold;
+}
+.buy-btn:hover {
+    background-color: #00e6b8;
+}
+
+/* Popup Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: #0d0d0d;
+    border: 2px solid #00ffcc;
+    border-radius: 14px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 0 30px #00ffcc66;
+    width: 300px;
+    animation: pop 0.3s ease;
+}
+@keyframes pop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.modal-content h2 {
+    margin-bottom: 10px;
+    color: #00ffcc;
+}
+.modal-content button {
+    margin-top: 10px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #00ffcc;
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+}
+.modal-content button:hover {
+    background: #00e6b8;
+}
+</style>
+</head>
+<body>
+
+<div class="market-controls">
+    <input type="text" id="searchBar" placeholder="🔍 Search AI items...">
+    <select id="sortSelect">
+        <option value="">Sort by</option>
+        <option value="priceLow">Price: Low → High</option>
+        <option value="priceHigh">Price: High → Low</option>
+    </select>
+</div>
+
+<div id="marketGrid" class="market-grid"></div>
+
+<!-- Buy Modal -->
+<div id="buyModal" class="modal">
+    <div class="modal-content">
+        <h2>Purchase Confirmed!</h2>
+        <p>🛒 Thank you for supporting <b>Neuraluxe-AI 💎</b></p>
+        <button id="closeModal">OK</button>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const marketGrid = document.getElementById("marketGrid");
+    const searchBar = document.getElementById("searchBar");
+    const sortSelect = document.getElementById("sortSelect");
+    const buyModal = document.getElementById("buyModal");
+    const closeModal = document.getElementById("closeModal");
+
+    // Generate 1000 items
+    const items = [];
+    for (let i = 1; i <= 1000; i++) {
+        items.push({
+            name: `AI Asset #${i}`,
+            price: (Math.random() * 499 + 1).toFixed(2),
+            img: `https://picsum.photos/seed/ai${i}/300/200`
+        });
+    }
+
+    function renderItems(data) {
+        marketGrid.innerHTML = "";
+        data.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "market-item-card";
+            card.innerHTML = `
+                <img src="${item.img}" alt="${item.name}">
+                <h3>${item.name}</h3>
+                <div class="market-meta">
+                    <span>$${item.price}</span>
+                    <span>⭐ ${(Math.random() * 5).toFixed(1)}</span>
+                </div>
+                <button class="buy-btn">Buy Now</button>
+            `;
+            marketGrid.appendChild(card);
+        });
+    }
+
+    renderItems(items);
+
+    // Search
+    searchBar.addEventListener("input", e => {
+        const term = e.target.value.toLowerCase();
+        const filtered = items.filter(it => it.name.toLowerCase().includes(term));
+        renderItems(filtered);
+    });
+
+    // Sort
+    sortSelect.addEventListener("change", e => {
+        let sorted = [...items];
+        if (e.target.value === "priceLow") sorted.sort((a, b) => a.price - b.price);
+        if (e.target.value === "priceHigh") sorted.sort((a, b) => b.price - a.price);
+        renderItems(sorted);
+    });
+
+    // Buy button logic
+    document.body.addEventListener("click", e => {
+        if (e.target.classList.contains("buy-btn")) {
+            buyModal.style.display = "flex";
+        }
+    });
+    closeModal.addEventListener("click", () => buyModal.style.display = "none");
+});
+</script>
+
+</body>
+</html>
+<!-- Inside <head> -->
+<link rel="stylesheet" href="loader.css">
+
+<!-- Before </body> -->
+<script src="loader.js"></script>
