@@ -1,54 +1,84 @@
-# Core web framework
+# ============================================================
+# 🌌 NeuraAI v10k Hyperluxe — Full Requirements
+# ============================================================
+
+# --- Core Frameworks ---
 Flask
 Flask-Cors
+Flask-RESTful
 
-# OpenAI API
-openai
-
-# Database
-sqlite3 ; python_version < "3.12"  # optional for older Python versions
-
-# HTTP & Requests
-requests
-httpx
-
-# Async / Scheduler / Background
-apscheduler
-celery
-redis
-
-# Environment management
+# --- Environment & Configuration ---
 python-dotenv
 
-# Data & Utils
+# --- HTTP Requests & APIs ---
+httpx
+requests
+aiohttp
+
+# --- Caching & Performance ---
+cachelib
+diskcache
+
+# --- Data Processing & Utilities ---
 numpy
 pandas
-PyYAML
-python-dateutil
+python-magic
+pyyaml
+json5
+regex
 tqdm
 
-# Security / Auth
-itsdangerous
-passlib
-
-# Dev & Logging
-loguru
-
-# Optional voice / TTS
+# --- Voice & Text-to-Speech Engines ---
 gTTS
+pyttsx3
+edge-tts
+coqui-tts
+
+# --- Audio & Media Handling ---
+pydub
+soundfile
 playsound
+pygame
 
-# Optional language translation
-googletrans
-
-# Optional image processing
-Pillow
-
-# Optional WebSockets (if needed for games / chat)
-websockets
-
-# Optional AI model utils
+# --- NLP & Language Tools ---
+nltk
+spacy
+langdetect
 sentence-transformers
+rapidfuzz
 
-# Optional analytics & metrics
-prometheus-client
+# --- Web Scraping & Automation ---
+selenium
+beautifulsoup4
+lxml
+html5lib
+pyppeteer
+
+# --- Security & Encryption ---
+cryptography
+pycryptodome
+
+# --- PDF & Document Handling ---
+PyPDF2
+python-docx
+openpyxl
+
+# --- Image & Video Processing ---
+Pillow
+opencv-python-headless
+
+# --- Offline AI / ML Helpers ---
+onnxruntime
+scikit-learn
+scipy
+
+# --- Logging & Monitoring ---
+loguru
+rich
+colorama
+
+# --- Notes ---
+# 1. torch and transformers removed to avoid build errors.
+# 2. Install in this order for Termux / Render to reduce subprocess compilation issues.
+# 3. Use prebuilt wheels if possible for numpy, pandas, Pillow, and onnxruntime.
+# ============================================================
