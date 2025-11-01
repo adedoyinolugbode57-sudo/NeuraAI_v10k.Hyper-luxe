@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neuraluxe Healthcare AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-pink">
+  <div id="sidebarToggle">☰</div>
+  <div id="sidebar">
+    <h2>Neuraluxe-AI</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="marketplace.html">Marketplace</a></li>
+      <li><a href="ai-chat.html">AI Chat</a></li>
+      <li><a href="trading-center.html">Trading</a></li>
+      <li class="active">Healthcare</li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h1>🩺 Neuraluxe Health Advisor</h1>
+    <p>Check your wellness, symptoms, or get instant fitness insights.</p>
+
+    <input id="symptomInput" type="text" placeholder="Enter a symptom..." style="padding:10px;border-radius:8px;border:2px solid #ff66cc;background:#2c0a2c;color:white;width:100%;margin-top:15px;">
+    <button class="buy-btn" id="analyzeBtn">Analyze</button>
+    <div id="result" style="margin-top:15px;"></div>
+  </div>
+
+  <script>
+    const sidebarToggle=document.getElementById("sidebarToggle");
+    const sidebar=document.getElementById("sidebar");
+    sidebarToggle.addEventListener("click",()=>sidebar.classList.toggle("active"));
+
+    document.getElementById("analyzeBtn").addEventListener("click",()=>{
+      const val=document.getElementById("symptomInput").value.trim();
+      const result=document.getElementById("result");
+      if(!val){result.innerHTML="<p>Please enter a symptom.</p>";return;}
+      const advice=["Stay hydrated 💧","Consult a doctor if it persists 🏥","Rest well and monitor 💤","Try a balanced diet 🥗"];
+      result.innerHTML=`<p><b>Possible AI advice:</b> ${advice[Math.floor(Math.random()*advice.length)]}</p>`;
+    });
+  </script>
+</body>
+</html>
