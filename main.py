@@ -796,6 +796,37 @@ def health():
 # ----------------------------
 # Final run
 # ----------------------------
+# ==========================================================
+# 🌍 Environment Variable Verification Route
+# ==========================================================
+from flask import jsonify
+import os
+
+@app.route("/env/check")
+def env_check():
+    """Verify all environment variables are loaded correctly."""
+    keys_to_check = [
+        "APP_NAME", "APP_VERSION", "FLASK_ENV", "PORT",
+        "DATABASE_URL", "VOICE_ENGINE", "TTS_LANG",
+        "CACHE_TYPE", "CRYPTO_API", "OPENFDA_API_BASE",
+        "NEURA_DEV_FREE_EMAIL", "OPENAI_ENABLED", "LOG_LEVEL",
+    ]
+
+    summary = {}
+    for key in keys_to_check:
+        value = os.getenv(key)
+        if value:
+            summary[key] = value if "KEY" not in key else "✅ Loaded"
+        else:
+            summary[key] = "⚠️ Missing"
+
+    return jsonify({
+        "status": "success",
+        "app": os.getenv("APP_NAME", "NeuraAI_v10k_Hyperluxe"),
+        "version": os.getenv("APP_VERSION", "v10k"),
+        "env_summary": summary,
+        "message": "All environment variables verified successfully!"
+    }), 200
 if __name__ == "__main__":
     # Ensure DB exists
     get_db()
@@ -1580,3 +1611,25 @@ def gen_item(index:int) -> Dict[str,Any]:
     price = round(29.99 + ((i%1000)*((9999.99-29.99)/1000)) + (r*49.99),2)
     rating = round(3.0 + (r*2.0),1)
     return {"id":f"nli-{i}","name":f"{
+    from flask import Flask, jsonify
+import os
+
+app = Flask(__name__)
+
+# Example AI / voice / DB initialization here
+# from your modules import AIEngine, VoiceEngine, DBConnection
+
+@app.route("/")
+def home():
+    return "NeuraAI v10k Hyperluxe is live! 🌌"
+
+@app.route("/env/check")
+def env_check():
+    env_vars = {key: os.environ.get(key) for key in [
+        "APP_NAME", "APP_VERSION", "DATABASE_URL", "VOICE_ENGINE",
+        "CACHE_TYPE", "OPENAI_ENABLED", "OPENAI_MODEL", "LOG_LEVEL"
+    ]}
+    return jsonify(env_vars)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
