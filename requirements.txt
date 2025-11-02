@@ -1,10 +1,10 @@
 # ===========================================================
-# 🌌 NeuraAI v10k Hyperluxe — Final Requirements
-# Production Build for Render (without torch or transformers)
+# 🌌 NeuraAI v10k Hyperluxe — Final Production Requirements
+# Compatible with async Flask, PostgreSQL, Uvicorn/Gunicorn
 # ===========================================================
 
 # --- Flask Core ---
-Flask
+Flask>=2.2
 Flask-Cors
 Flask-Caching
 Flask-SQLAlchemy
@@ -25,6 +25,7 @@ pytz
 # --- Database & Storage ---
 SQLAlchemy
 psycopg2-binary
+asyncpg
 
 # --- AI / NLP Essentials (lightweight) ---
 scikit-learn
