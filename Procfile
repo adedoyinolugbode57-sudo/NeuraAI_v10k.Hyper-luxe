@@ -1,1 +1,1 @@
-web: gunicorn main:app --workers 3 --timeout 120 --log-level info
+web: gunicorn main:app --workers=4 --threads=8 --timeout=120

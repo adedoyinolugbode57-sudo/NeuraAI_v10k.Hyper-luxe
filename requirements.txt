@@ -1,84 +1,92 @@
-# ============================================================
-# 🌌 NeuraAI v10k Hyperluxe — Full Requirements
-# ============================================================
+# ===========================================================
+# 🌌 NeuraAI v10k Hyperluxe — Final Requirements
+# Production Build for Render (without torch or transformers)
+# ===========================================================
 
-# --- Core Frameworks ---
+# --- Flask Core ---
 Flask
 Flask-Cors
-Flask-RESTful
+Flask-Caching
+Flask-SQLAlchemy
 
-# --- Environment & Configuration ---
+# --- Environment & Config ---
 python-dotenv
-
-# --- HTTP Requests & APIs ---
-httpx
 requests
-aiohttp
+httpx
 
-# --- Caching & Performance ---
-cachelib
-diskcache
-
-# --- Data Processing & Utilities ---
-numpy
+# --- Data Handling & Utilities ---
 pandas
-python-magic
-pyyaml
-json5
-regex
-tqdm
+numpy
+beautifulsoup4
+lxml
+schedule
+pytz
 
-# --- Voice & Text-to-Speech Engines ---
+# --- Database & Storage ---
+SQLAlchemy
+psycopg2-binary
+
+# --- AI / NLP Essentials (lightweight) ---
+scikit-learn
+nltk
+textblob
+emoji
+spacy
+
+# --- Voice & Speech ---
 gTTS
 pyttsx3
 edge-tts
-coqui-tts
-
-# --- Audio & Media Handling ---
 pydub
-soundfile
-playsound
-pygame
 
-# --- NLP & Language Tools ---
-nltk
-spacy
-langdetect
-sentence-transformers
-rapidfuzz
+# --- Background Tasks & Performance ---
+redis
+rq
+apscheduler
 
-# --- Web Scraping & Automation ---
-selenium
-beautifulsoup4
-lxml
-html5lib
-pyppeteer
-
-# --- Security & Encryption ---
+# --- Security & Auth ---
+itsdangerous
+bcrypt
 cryptography
-pycryptodome
 
-# --- PDF & Document Handling ---
-PyPDF2
+# --- Web & API Tools ---
+aiohttp
+uvicorn
+gunicorn
+
+# --- Dev & Diagnostics ---
+colorama
+loguru
+
+# --- Optional Enhancements ---
+coingecko
+yfinance
+requests-cache
+
+# --- For News, Health, and Data APIs ---
+feedparser
+openmeteo-requests
+json5
+
+# --- Compression & Optimization ---
+brotli
+zstandard
+
+# --- File Handling & Parsing ---
 python-docx
+pdfminer.six
+pypdf2
 openpyxl
 
-# --- Image & Video Processing ---
-Pillow
+# --- Image, Video, and Media ---
+pillow
 opencv-python-headless
+moviepy
 
-# --- Offline AI / ML Helpers ---
-onnxruntime
-scikit-learn
-scipy
+# --- Testing & Debugging ---
+pytest
+pytest-asyncio
 
-# --- Logging & Monitoring ---
-loguru
+# --- CLI Tools ---
+click
 rich
-colorama
-
-# --- Notes ---
-# 1. torch and transformers removed to avoid build errors.
-# 2. Install in this order for Termux / Render to reduce subprocess compilation issues.
-# 3. Use prebuilt wheels if possible for numpy, pandas, Pillow, and onnxruntime.
-# ============================================================
