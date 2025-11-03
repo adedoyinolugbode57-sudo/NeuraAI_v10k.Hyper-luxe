@@ -1,65 +1,73 @@
-"""
-Neuraluxe-AI Smart Logger — Independent Utility Module
-Logs system events, chats, and environment summaries with color and rotation.
-"""
+# ==========================================================
+# 🌌 Neuraluxe-AI — Environment & System Logger
+# Author: Joshua_Dav
+# Purpose: Validate environment variables + structured logging
+# ==========================================================
 
-import os
-import logging
-from logging.handlers import RotatingFileHandler
+import os, sys, logging
 from datetime import datetime
-from colorama import Fore, Style, init
+from dotenv import load_dotenv
 
-init(autoreset=True)
+# -----------------------------
+# LOAD ENVIRONMENT
+# -----------------------------
+load_dotenv()
 
-LOG_DIR = "logs"
-os.makedirs(LOG_DIR, exist_ok=True)
-LOG_FILE = os.path.join(LOG_DIR, "neuraluxe.log")
+# -----------------------------
+# LOGGING CONFIGURATION
+# -----------------------------
+LOG_FILE = "neuraai_startup.log"
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
 
-# Configure rotating file handler (max 1 MB per file, keep 5 backups)
-file_handler = RotatingFileHandler(LOG_FILE, maxBytes=1_000_000, backupCount=5)
-formatter = logging.Formatter("[%(asctime)s] [%(levelname)s] %(message)s", "%Y-%m-%d %H:%M:%S")
-file_handler.setFormatter(formatter)
+logging.basicConfig(
+    level=getattr(logging, LOG_LEVEL, logging.INFO),
+    format="%(asctime)s | %(levelname)-8s | %(message)s",
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler(LOG_FILE, mode='a', encoding='utf-8')
+    ]
+)
 
-# Global logger setup
-logger = logging.getLogger("NeuraluxeLogger")
-logger.setLevel(logging.INFO)
-logger.addHandler(file_handler)
+logger = logging.getLogger("NeuraAI_Logger")
 
-# --- Utility Functions ---
-def log_event(message: str, level: str = "info"):
-    """Log a message with a color-coded console output."""
-    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
-    msg = f"[{timestamp}] {message}"
+# -----------------------------
+# ENVIRONMENT SUMMARY
+# -----------------------------
+ENV_KEYS = [
+    "APP_NAME", "APP_VERSION", "FLASK_ENV", "PORT",
+    "DATABASE_URL", "VOICE_ENGINE", "TTS_LANG",
+    "CACHE_TYPE", "CRYPTO_API", "OPENFDA_API_BASE",
+    "NEURA_DEV_FREE_EMAIL", "OPENAI_ENABLED", "LOG_LEVEL"
+]
 
-    if level.lower() == "error":
-        print(Fore.RED + msg + Style.RESET_ALL)
-        logger.error(message)
-    elif level.lower() == "warning":
-        print(Fore.YELLOW + msg + Style.RESET_ALL)
-        logger.warning(message)
+def summarize_env():
+    logger.info("🛰️  Booting Neuraluxe-AI Environment Check...")
+    missing = []
+    for key in ENV_KEYS:
+        val = os.getenv(key)
+        if val:
+            if "KEY" in key or "PASS" in key:
+                logger.info(f"{key} = ✅ [SECURE VALUE LOADED]")
+            else:
+                logger.info(f"{key} = {val}")
+        else:
+            logger.warning(f"{key} = ⚠️ Missing")
+            missing.append(key)
+    if not missing:
+        logger.info("✅ All critical environment variables loaded successfully.")
     else:
-        print(Fore.CYAN + msg + Style.RESET_ALL)
-        logger.info(message)
+        logger.warning(f"⚠️ Missing {len(missing)} keys: {', '.join(missing)}")
 
-def log_startup(app_name="Neuraluxe-AI"):
-    """Log a startup event with app info."""
-    banner = f"🚀 {app_name} Started Successfully at {datetime.utcnow()} UTC"
-    log_event(banner)
-    log_event("System diagnostics: memory, routes, and env OK ✅")
+# -----------------------------
+# STARTUP LOG ENTRY
+# -----------------------------
+def log_startup():
+    logger.info("===========================================================")
+    logger.info(f"🚀 Neuraluxe-AI Startup | Time: {datetime.utcnow().isoformat()} UTC")
+    logger.info(f"🌍 Running in region: {os.getenv('DEPLOY_REGION', 'unknown')}")
+    logger.info(f"📦 Version: {os.getenv('APP_VERSION', 'v10k')} | Stage: {os.getenv('PROJECT_STAGE', 'production')}")
+    logger.info("===========================================================")
+    summarize_env()
 
-def log_chat(user_id: str, message: str, response: str):
-    """Log user chat interactions."""
-    entry = f"[User: {user_id}] said '{message}' → Bot replied: '{response}'"
-    log_event(entry)
-
-def log_env_summary(env_vars: list):
-    """Log a summary of key environment variables (masked for safety)."""
-    masked = {key: ("✅ Loaded" if os.getenv(key) else "⚠️ Missing") for key in env_vars}
-    log_event(f"Environment Summary: {masked}")
-
-# Example standalone run
 if __name__ == "__main__":
-    log_startup("NeuraAI v10k Hyperluxe")
-    log_event("System warming up...")
-    log_chat("demo_user", "Hello world!", "Greetings from Neuraluxe-AI 🌍")
-    log_env_summary(["APP_NAME", "PORT", "OPENAI_ENABLED"])
+    log_startup()

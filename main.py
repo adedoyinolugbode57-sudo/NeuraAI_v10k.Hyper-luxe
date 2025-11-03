@@ -1598,75 +1598,58 @@ def admin_required(f):
 # ----------------------------
 CATEGORIES = ["AI Tools","Automation Bots","Trading Scripts","Freelancer Tools","Design Studio",
               "Crypto Assets","Voice & Language","Education Packs","Developer Plugins","Global Add-Ons"]
+              # ==========================================================
+# 🌌 Neuraluxe-AI Tail Section — Stable Worker v3 Fix
+# ==========================================================
 
-def mulberry32(seed:int)->float:
-    seed &= 0xffffffff
-    seed = (seed + 0x6D2B79F5) & 0xffffffff
-    seed = (seed ^ (seed >> 16)) * 0x45d9f3b
-    seed = (seed ^ (seed >> 16)) * 0x45d9f3b
-    seed ^= seed >> 16
-    return (seed & 0xffffffff)/4294967296.0
+import math, uuid
 
-def gen_item(index:int) -> Dict[str,Any]:
-    i = max(1,index)
-    r = mulberry32(i)
-    cat = CATEGORIES[i%len(CATEGORIES)]
-    base_map = {"AI Tools":"Neuraluxe AI Tool","Automation Bots":"AutoFlow Bot","Trading Scripts":"Neuraluxe Trader",
-                "Freelancer Tools":"Freelance Boost Kit","Design Studio":"Studio Pack","Crypto Assets":"Crypto Signal Module",
-                "Voice & Language":"Voice Pack","Education Packs":"Learning Module","Developer Plugins":"Dev Plugin",
-                "Global Add-Ons":"Legacy Add-On"}
-    base = base_map.get(cat,"Neuraluxe Asset")
-    price = round(29.99 + ((i%1000)*((9999.99-29.99)/1000)) + (r*49.99),2)
-    rating = round(3.0 + (r*2.0),1)
-    return {"id":f"nli-{i}","name":f"{
-    from flask import Flask, jsonify
-import os
+# ---------- Utility Section ----------
+def gen_item(index: int):
+    """Generate a lightweight AI item safely."""
+    categories = [
+        "AI Tools", "Automation Bots", "Trading Scripts",
+        "Freelancer Tools", "Design Studio", "Crypto Assets",
+        "Voice & Language", "Education Packs", "Developer Kits"
+    ]
+    i = max(1, index)
+    cat = categories[i % len(categories)]
+    return {
+        "id": f"nli-{i}",
+        "name": f"Neuraluxe {cat} {i}",
+        "category": cat,
+        "uuid": str(uuid.uuid4())[:8],
+        "rating": round((i % 5) + 0.5, 1)
+    }
 
-app = Flask(__name__)
+@app.route("/items/<int:count>")
+def get_items(count):
+    """Return a list of generated AI items."""
+    data = [gen_item(i) for i in range(1, min(count, 50) + 1)]
+    return jsonify({
+        "status": "success",
+        "items": data,
+        "count": len(data)
+    })
 
-# Example AI / voice / DB initialization here
-# from your modules import AIEngine, VoiceEngine, DBConnection
-
-@app.route("/")
-def home():
-    return "NeuraAI v10k Hyperluxe is live! 🌌"
-
+# ---------- Safe Environment Checker ----------
 @app.route("/env/check")
 def env_check():
-    env_vars = {key: os.environ.get(key) for key in [
-        "APP_NAME", "APP_VERSION", "DATABASE_URL", "VOICE_ENGINE",
-        "CACHE_TYPE", "OPENAI_ENABLED", "OPENAI_MODEL", "LOG_LEVEL"
-    ]}
-    return jsonify(env_vars)
+    """Quick Render-friendly env check route."""
+    keys_to_check = [
+        "APP_NAME", "APP_VERSION", "FLASK_ENV",
+        "CACHE_TYPE", "LOG_LEVEL", "OPENAI_ENABLED"
+    ]
+    summary = {k: ("✅" if os.getenv(k) else "⚠️ Missing") for k in keys_to_check}
+    return jsonify({
+        "app": os.getenv("APP_NAME", "Neuraluxe-AI"),
+        "version": os.getenv("APP_VERSION", "v10k"),
+        "env": summary,
+        "message": "Environment check successful 🚀"
+    }), 200
 
+
+# ---------- App Runner ----------
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
-    # ------------------------------------------
-# Imports and Flask app setup
-# ------------------------------------------
-from flask import Flask
-import os
-
-app = Flask(__name__)
-
-# ------------------------------------------
-# Routes and logic here
-# ------------------------------------------
-@app.route("/")
-def home():
-    return "Neuraluxe-AI is running!"
-
-# (other routes go here...)
-
-# ------------------------------------------
-# Final startup section (add this block below)
-# ------------------------------------------
-if __name__ == "__main__":
-    try:
-        print("🚀 Booting Neuraluxe-AI Server...")
-        port = int(os.getenv("PORT", 10000))
-        app.run(host="0.0.0.0", port=port)
-    except Exception as e:
-        import traceback
-        print("🔥 Startup error:", e)
-        traceback.print_exc()
+    port = int(os.getenv("PORT", 10000))
+    app.run(host="0.0.0.0", port=port, debug=False)
