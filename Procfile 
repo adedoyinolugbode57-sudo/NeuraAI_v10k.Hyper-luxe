@@ -1,1 +1,43 @@
-web: gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:$PORT --timeout 120
+# ===========================================================
+# 🌌 Neuraluxe-AI (NeuraAI v10k Hyperluxe)
+# Render Deployment Configuration — Final Version
+# ===========================================================
+services:
+  - type: web
+    name: neuraluxe-ai
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn main:app --workers=4 --threads=8 --timeout=120
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CACHE_TYPE
+        value: simple
+      - key: OPENAI_ENABLED
+        value: "false"
+      - key: LOG_LEVEL
+        value: info
+      - key: ENABLE_ENV_CHECK
+        value: "true"
+
+    autoDeploy: true
+    healthCheckPath: /env/check
+
+    # ===========================================================
+    # 🧠 Optional Enhancements
+    # ===========================================================
+    disk:
+      name: cache
+      mountPath: /data
+      sizeGB: 1
+
+    buildFilter:
+      paths:
+        - main.py
+        - requirements.txt
+        - render.yaml
+        - Procfile

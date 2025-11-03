@@ -827,6 +827,14 @@ def env_check():
         "env_summary": summary,
         "message": "All environment variables verified successfully!"
     }), 200
+    # --- Optional: Quick Environment Summary Log on Startup ---
+if os.getenv("ENABLE_ENV_CHECK", "false").lower() == "true":
+    print("\n🌍 Environment Summary — Neuraluxe-AI Boot Log")
+    print("-------------------------------------------------")
+    for key in ["APP_NAME", "APP_VERSION", "FLASK_ENV", "PORT", "LOG_LEVEL"]:
+        val = os.getenv(key, "⚠️ Missing")
+        print(f"{key}: {val}")
+    print("-------------------------------------------------\n")
 if __name__ == "__main__":
     # Ensure DB exists
     get_db()
@@ -1633,3 +1641,32 @@ def env_check():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
+    # ------------------------------------------
+# Imports and Flask app setup
+# ------------------------------------------
+from flask import Flask
+import os
+
+app = Flask(__name__)
+
+# ------------------------------------------
+# Routes and logic here
+# ------------------------------------------
+@app.route("/")
+def home():
+    return "Neuraluxe-AI is running!"
+
+# (other routes go here...)
+
+# ------------------------------------------
+# Final startup section (add this block below)
+# ------------------------------------------
+if __name__ == "__main__":
+    try:
+        print("🚀 Booting Neuraluxe-AI Server...")
+        port = int(os.getenv("PORT", 10000))
+        app.run(host="0.0.0.0", port=port)
+    except Exception as e:
+        import traceback
+        print("🔥 Startup error:", e)
+        traceback.print_exc()
