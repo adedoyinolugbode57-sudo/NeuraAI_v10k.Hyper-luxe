@@ -1,0 +1,143 @@
+# ===========================================================
+# 🌌 Neuraluxe-AI (NeuraAI v10k Hyperluxe)
+# Northflank Deployment — Ultimate Production Configuration
+# ===========================================================
+
+volumes:
+  - name: cache
+    path: /data
+    sizeGB: 1
+  - name: env-volume
+    path: /app/.env
+    source: secret
+    secretName: neuraluxe-env
+
+services:
+  # -----------------------
+  # Web Frontend Service
+  # -----------------------
+  - name: neuraluxe-web
+    type: web
+    image:
+      build: .
+    ports:
+      - 10000
+    environment:
+      FLASK_ENV: production
+      CACHE_TYPE: simple
+      CACHE_DEFAULT_TIMEOUT: 300
+      ENABLE_ENV_CHECK: "true"
+      LOG_LEVEL: info
+      PYTHON_VERSION: 3.10.13
+      GUNICORN_CMD_ARGS: "--workers=4 --threads=8 --timeout=120"
+      DEPLOY_REGION: oregon
+      PROJECT_STAGE: production
+      HEALTHCHECK_PATH: /env/check
+      ERROR_TRACKING: enabled
+      MAX_REQUEST_SIZE_MB: 15
+      AI_RESPONSE_MODE: balanced
+      ASYNC_MODE: true
+      # Premium ideas / enhancements
+      ENABLE_VOICE_CACHE: "true"
+      ENABLE_ASSET_LAZYLOAD: "true"
+      ENABLE_USER_SESSION_TRACKING: "true"
+      ENABLE_MARKETPLACE_LOGGING: "true"
+      ENABLE_CRYPTO_BOT_LOGGING: "true"
+      ENABLE_DYNAMIC_THEME: "true"
+      ENABLE_ANALYTICS: "true"
+      ENABLE_BACKGROUND_STATS: "true"
+      ENABLE_ERROR_MONITORING: "true"
+      ENABLE_AUTO_UPDATE: "true"
+    build:
+      commands:
+        - pip install --upgrade pip
+        - pip install -r requirements.txt
+    start:
+      command: gunicorn main:app --workers=4 --threads=8 --timeout=120
+    healthCheck:
+      path: /env/check
+      interval: 30s
+      timeout: 5s
+    resources:
+      cpu: 1
+      memory: 1GB
+      concurrency: 50
+    volumes:
+      - name: cache
+        path: /data
+      - name: env-volume
+        path: /app/.env
+    autoDeploy: true
+
+  # -----------------------
+  # Background Worker
+  # -----------------------
+  - name: neuraluxe-worker
+    type: worker
+    image:
+      build: .
+    environment:
+      FLASK_ENV: production
+      REDIS_URL: redis://neuraluxe-redis:6379/0
+      LOG_LEVEL: info
+      ASYNC_MODE: true
+      # Premium ideas / enhancements
+      ENABLE_TASK_LOGGING: "true"
+      ENABLE_BOT_QUEUE: "true"
+      ENABLE_CRYPTO_ANALYTICS: "true"
+      ENABLE_USER_LOAD_TRACKING: "true"
+    build:
+      commands:
+        - pip install --upgrade pip
+        - pip install -r requirements.txt
+    start:
+      command: rq worker --with-scheduler
+    resources:
+      cpu: 1
+      memory: 1GB
+    volumes:
+      - name: env-volume
+        path: /app/.env
+    autoDeploy: true
+
+  # -----------------------
+  # Redis Cache
+  # -----------------------
+  - name: neuraluxe-redis
+    type: cache
+    image:
+      repository: redis
+      tag: 7.2
+    resources:
+      cpu: 0.5
+      memory: 512MB
+    autoDeploy: true
+
+  # -----------------------
+  # Optional Monitoring / Analytics Service
+  # -----------------------
+  - name: neuraluxe-monitor
+    type: worker
+    image:
+      build: .
+    environment:
+      FLASK_ENV: production
+      LOG_LEVEL: info
+      ASYNC_MODE: true
+      ENABLE_METRICS: "true"
+      ENABLE_USER_ANALYTICS: "true"
+      ENABLE_CRYPTO_ANALYTICS: "true"
+      ENABLE_ERROR_MONITORING: "true"
+    build:
+      commands:
+        - pip install --upgrade pip
+        - pip install -r requirements.txt
+    start:
+      command: python monitor.py
+    resources:
+      cpu: 0.5
+      memory: 512MB
+    volumes:
+      - name: env-volume
+        path: /app/.env
+    autoDeploy: true
